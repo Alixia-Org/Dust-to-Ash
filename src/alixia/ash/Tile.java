@@ -2,7 +2,7 @@ package alixia.ash;
 
 import java.awt.Image;
 
-public class Tile {
+public abstract class Tile {
 
 	private int x, y;
 	private Image icon;
