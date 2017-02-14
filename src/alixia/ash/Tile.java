@@ -24,5 +24,7 @@ public abstract class Tile {
 	public int getY() {
 		return y;
 	}
-
+	public void onTick(Ash instance){
+		
+	}
 }
