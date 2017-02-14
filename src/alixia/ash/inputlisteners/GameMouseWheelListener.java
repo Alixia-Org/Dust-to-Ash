@@ -19,8 +19,7 @@ public class GameMouseWheelListener implements MouseWheelListener {
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		// TODO Auto-generated method stub
-
+		instance.mouseWheelMoved(e);
 	}
 
 }

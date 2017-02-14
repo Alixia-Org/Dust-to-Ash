@@ -2,6 +2,9 @@ package alixia.ash;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -41,8 +44,6 @@ public final class Ash {
 		return timer;
 	}
 
-	
-
 	private void dispose() {
 		timer.dispose();
 		window.dispose();
@@ -64,6 +65,60 @@ public final class Ash {
 	public static void main(String[] args) {
 		Ash ash = new Ash();
 		ash.start();
+
+	}
+
+	public void onKeyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void mouseWheelMoved(MouseWheelEvent e) {
+		// TODO Auto-generated method stub
 
 	}
 

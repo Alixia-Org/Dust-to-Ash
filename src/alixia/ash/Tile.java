@@ -2,7 +2,7 @@ package alixia.ash;
 
 import java.awt.Image;
 
-public abstract class Tile {
+public class Tile extends Object{
 
 	private int x, y;
 	private Image icon;
@@ -25,6 +25,10 @@ public abstract class Tile {
 		return y;
 	}
 	public void onTick(Ash instance){
+		
+	}
+
+	public void onTick() {
 		
 	}
 }

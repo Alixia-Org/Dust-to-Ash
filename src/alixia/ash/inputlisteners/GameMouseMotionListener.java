@@ -19,14 +19,12 @@ public class GameMouseMotionListener implements MouseMotionListener {
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+		instance.mouseDragged(e);
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+		instance.mouseMoved(e);
 	}
 
 }
