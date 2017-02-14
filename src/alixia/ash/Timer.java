@@ -10,8 +10,6 @@ public class Timer {
 
 	void start() {
 
-		// TODO Load up time from the save.
-
 		running = true;
 		loop();
 	}
@@ -36,7 +34,7 @@ public class Timer {
 	private boolean running;
 
 	public void initialize() {
-		// TODO Auto-generated method stub
+		// TODO Load up time from the save.
 
 	}
 }
