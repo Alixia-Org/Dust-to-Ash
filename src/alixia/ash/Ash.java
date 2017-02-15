@@ -28,11 +28,11 @@ import javax.swing.JFrame;
  * <br>
  * <br>
  * <br>
- * The structure of this game's code is setup where everything branches out like
- * a tree. The very base is this class, which holds other objects such as the
- * ones specified above. Each of those objects contribute their own functions
- * and methods and may hold other objects which each do the same. This can
- * change if necessary.
+ * The structure of this game's code is setup to where everything branches out
+ * like a tree. The very base is this class, which holds other objects such as
+ * the ones specified above. Each of those objects contribute their own
+ * functions and methods and may hold other objects which each do the same. This
+ * can change if necessary.
  * 
  * @author Zeale
  *
@@ -144,16 +144,32 @@ public final class Ash {
 		// TODO Run onRender code.
 	}
 
+	/**
+	 * This method is a simple getter for this object's {@link #timer} object.
+	 * 
+	 * @return This object's {@link #timer} object.
+	 */
 	public Timer getTimer() {
 		return timer;
 	}
 
+	/**
+	 * This method is called when the game has finished running. It closes the
+	 * window, saves the game, and disposes anything that needs to be disposed
+	 * of. Anything that needs to be run when the game closes should be put put
+	 * in the dispose method of an object.
+	 */
 	private void dispose() {
 		timer.dispose();
 		window.dispose();
 		world.dispose();
 	}
 
+	/**
+	 * This method is called when the program is started. It initializes
+	 * everything and sets up the game. If a save is found (see
+	 * {@link #isFirstLaunch()}), then the save is loaded up in this method.
+	 */
 	private void initialize() {
 		window.initialize();
 		world.initialize();
@@ -162,65 +178,178 @@ public final class Ash {
 		timer.start();
 	}
 
+	/**
+	 * This is a static method used to retrieve a graphical resource (an
+	 * {@link Image}) from the classpath, (specifically, the
+	 * <code>graphics</code> folder).<br>
+	 * <br>
+	 * 
+	 * This method is made to cut down on tedious work.
+	 * 
+	 * @param path
+	 *            The path of the resource that will be retrieved.
+	 * @return A new Image object that was created using the resource specified.
+	 */
 	public static Image getGraphic(String path) {
 		return new ImageIcon(Ash.class.getResource("graphics/" + path)).getImage();
 	}
 
+	/**
+	 * This class's main method. The program currently starts from here. This
+	 * method just creates a new <code>Ash</code> object and then starts it.
+	 * 
+	 * @param args
+	 *            Program Arguments.
+	 */
 	public static void main(String[] args) {
 		Ash ash = new Ash();
 		ash.start();
 
 	}
 
+	/**
+	 * This method is called by the {@link #window} when a key is typed on the
+	 * keyboard.
+	 * 
+	 * @param e
+	 *            The KeyEvent object of this event. It contains data about this
+	 *            event, like what key was typed.
+	 */
 	public void onKeyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * This method is called by the {@link #window} when a key is pressed on the
+	 * keyboard. This event is fired at the same time that the key is pushed
+	 * down. The {@link #keyReleased(KeyEvent)} method handles when a key is
+	 * released.
+	 * 
+	 * @param e
+	 *            The KeyEvent object of this event. It contains data about the
+	 *            event, like what key was pressed.
+	 * 
+	 * @see #keyReleased(KeyEvent)
+	 */
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * This method is called by the {@link #window} when a key is released.
+	 * 
+	 * @param e
+	 *            The KeyEvent object of this event. It contains data about the
+	 *            event, like what key was released.
+	 */
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * This method is called by the {@link #window} when any of the mouse keys
+	 * are clicked, (pushed down then released; including the mouse wheel).
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the event, like the position at which it occurred on the
+	 *            screen and which part of the mouse was clicked.
+	 */
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * This method is called by the {@link #window} when any of the mouse keys
+	 * are pressed down. (This includes the mouse wheel.)
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the event, like the position at which it occurred on the
+	 *            screen and which part of the mouse was pressed.
+	 */
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * This method is called by the {@link #window} when any of the buttons on
+	 * the mouse are released. (This includes the mouse wheel.)
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the event, like the position of the mouse on the screen when
+	 *            the event occurred, and which button on the mouse was
+	 *            released.
+	 */
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * This method is called by the {@link #window} when the mouse enters the
+	 * screen.
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the position of the mouse when this event was fired.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * This method is called by the {@link #window} when the mouse exits the
+	 * screen.
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the position of the mouse when this event was fired.
+	 */
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * This method is called by the {@link #window} when the user holds down a
+	 * mouse button while moving the mouse. (This includes the mouse wheel)
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains information
+	 *            about the event.
+	 */
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * This method is called by the {@link #window} when the mouse is moved.
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains information
+	 *            about the event.
+	 */
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * This method is called by the {@link #window} when the mouse wheel is
+	 * moved.
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains information
+	 *            about the event.
+	 */
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		// TODO Auto-generated method stub
 
