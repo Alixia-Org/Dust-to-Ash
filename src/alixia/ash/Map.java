@@ -162,11 +162,9 @@ public class Map {
 	 * loop, and ticking.<br>
 	 * <br>
 	 * This method runs whatever it needs to each tick and then calls the tick
-	 * method of each GameObject that it owns.
+	 * method of each game object that it owns.
 	 */
 	void onTick() {
-		for (Tile[] tileSubArr : tiles)
-			for (Tile tile : tileSubArr)
-				tile.onTick(instance);
+
 	}
 }

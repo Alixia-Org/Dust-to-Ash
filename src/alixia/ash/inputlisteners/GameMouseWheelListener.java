@@ -19,7 +19,7 @@ public class GameMouseWheelListener implements MouseWheelListener {
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		instance.mouseWheelMoved(e);
+		instance.onMouseWheelMoved(e);
 	}
 
 }

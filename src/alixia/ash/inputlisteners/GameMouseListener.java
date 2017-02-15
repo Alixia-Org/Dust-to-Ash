@@ -19,27 +19,27 @@ public class GameMouseListener implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		instance.mouseClicked(e);
+		instance.onMouseClicked(e);
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		instance.mouseEntered(e);
+		instance.onMouseEntered(e);
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		instance.mouseExited(e);
+		instance.onMouseExited(e);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		instance.mousePressed(e);
+		instance.onMousePressed(e);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		instance.mouseReleased(e);
+		instance.onMouseReleased(e);
 	}
 
 }

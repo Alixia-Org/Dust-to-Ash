@@ -86,6 +86,7 @@ public final class Ash {
 	 * {@link World} for more details.
 	 */
 	private World world = new World(this);
+
 	/**
 	 * This method is called when the game has finished running. It closes the
 	 * window, saves the game, and disposes anything that needs to be disposed
@@ -146,16 +147,16 @@ public final class Ash {
 	/**
 	 * This method is called by the {@link #window} when a key is pressed on the
 	 * keyboard. This event is fired at the same time that the key is pushed
-	 * down. The {@link #keyReleased(KeyEvent)} method handles when a key is
+	 * down. The {@link #onKeyReleased(KeyEvent)} method handles when a key is
 	 * released.
 	 * 
 	 * @param e
 	 *            The KeyEvent object of this event. It contains data about the
 	 *            event, like what key was pressed.
 	 * 
-	 * @see #keyReleased(KeyEvent)
+	 * @see #onKeyReleased(KeyEvent)
 	 */
-	public void keyPressed(KeyEvent e) {
+	public void onKeyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}
@@ -167,114 +168,7 @@ public final class Ash {
 	 *            The KeyEvent object of this event. It contains data about the
 	 *            event, like what key was released.
 	 */
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * This method is called by the {@link #window} when any of the mouse keys
-	 * are clicked, (pushed down then released; including the mouse wheel).
-	 * 
-	 * @param e
-	 *            The MouseEvent object of this event. It contains data about
-	 *            the event, like the position at which it occurred on the
-	 *            screen and which part of the mouse was clicked.
-	 */
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * This method is called by the {@link #window} when the user holds down a
-	 * mouse button while moving the mouse. (This includes the mouse wheel)
-	 * 
-	 * @param e
-	 *            The MouseEvent object of this event. It contains information
-	 *            about the event.
-	 */
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * This method is called by the {@link #window} when the mouse enters the
-	 * screen.
-	 * 
-	 * @param e
-	 *            The MouseEvent object of this event. It contains data about
-	 *            the position of the mouse when this event was fired.
-	 */
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * This method is called by the {@link #window} when the mouse exits the
-	 * screen.
-	 * 
-	 * @param e
-	 *            The MouseEvent object of this event. It contains data about
-	 *            the position of the mouse when this event was fired.
-	 */
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * This method is called by the {@link #window} when the mouse is moved.
-	 * 
-	 * @param e
-	 *            The MouseEvent object of this event. It contains information
-	 *            about the event.
-	 */
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * This method is called by the {@link #window} when any of the mouse keys
-	 * are pressed down. (This includes the mouse wheel.)
-	 * 
-	 * @param e
-	 *            The MouseEvent object of this event. It contains data about
-	 *            the event, like the position at which it occurred on the
-	 *            screen and which part of the mouse was pressed.
-	 */
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * This method is called by the {@link #window} when any of the buttons on
-	 * the mouse are released. (This includes the mouse wheel.)
-	 * 
-	 * @param e
-	 *            The MouseEvent object of this event. It contains data about
-	 *            the event, like the position of the mouse on the screen when
-	 *            the event occurred, and which button on the mouse was
-	 *            released.
-	 */
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * This method is called by the {@link #window} when the mouse wheel is
-	 * moved.
-	 * 
-	 * @param e
-	 *            The MouseEvent object of this event. It contains information
-	 *            about the event.
-	 */
-	public void mouseWheelMoved(MouseWheelEvent e) {
+	public void onKeyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}
@@ -289,6 +183,113 @@ public final class Ash {
 	 */
 	public void onKeyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * This method is called by the {@link #window} when any of the mouse keys
+	 * are clicked, (pushed down then released; including the mouse wheel).
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the event, like the position at which it occurred on the
+	 *            screen and which part of the mouse was clicked.
+	 */
+	public void onMouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * This method is called by the {@link #window} when the user holds down a
+	 * mouse button while moving the mouse. (This includes the mouse wheel)
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains information
+	 *            about the event.
+	 */
+	public void onMouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * This method is called by the {@link #window} when the mouse enters the
+	 * screen.
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the position of the mouse when this event was fired.
+	 */
+	public void onMouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * This method is called by the {@link #window} when the mouse exits the
+	 * screen.
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the position of the mouse when this event was fired.
+	 */
+	public void onMouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * This method is called by the {@link #window} when the mouse is moved.
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains information
+	 *            about the event.
+	 */
+	public void onMouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * This method is called by the {@link #window} when any of the mouse keys
+	 * are pressed down. (This includes the mouse wheel.)
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the event, like the position at which it occurred on the
+	 *            screen and which part of the mouse was pressed.
+	 */
+	public void onMousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * This method is called by the {@link #window} when any of the buttons on
+	 * the mouse are released. (This includes the mouse wheel.)
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the event, like the position of the mouse on the screen when
+	 *            the event occurred, and which button on the mouse was
+	 *            released.
+	 */
+	public void onMouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * This method is called by the {@link #window} when the mouse wheel is
+	 * moved.
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains information
+	 *            about the event.
+	 */
+	public void onMouseWheelMoved(MouseWheelEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 
 	/**

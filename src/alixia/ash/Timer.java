@@ -11,7 +11,7 @@ public class Timer {
 	public Timer(Ash instance) {
 		this.instance = instance;
 	}
-	
+
 	void dispose() {
 	}
 
@@ -37,7 +37,7 @@ public class Timer {
 		loop();
 	}
 
-	void stop(){
+	void stop() {
 		running = false;
 	}
 }

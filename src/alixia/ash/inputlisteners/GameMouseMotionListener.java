@@ -19,12 +19,12 @@ public class GameMouseMotionListener implements MouseMotionListener {
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		instance.mouseDragged(e);
+		instance.onMouseDragged(e);
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		instance.mouseMoved(e);
+		instance.onMouseMoved(e);
 	}
 
 }
