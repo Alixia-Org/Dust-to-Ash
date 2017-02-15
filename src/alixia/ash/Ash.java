@@ -40,145 +40,6 @@ import javax.swing.JFrame;
 public final class Ash {
 
 	/**
-	 * This method checks if <strong>Ash</strong> has been launched before. It
-	 * looks up the main save file and returns true if the file exists and is
-	 * readable.
-	 * 
-	 * @return <code>true</code> if the game has been launched before,
-	 *         (specifically, if it has found a save data file). Returns
-	 *         <code>false</code> otherwise.
-	 */
-	public boolean isFirstLaunch() {
-		// TODO Check if the game has been launched before.
-		return true;
-	}
-
-	/**
-	 * This method starts the game. This method will manage everything, from
-	 * starting the game to stopping it.
-	 */
-	public void start() {
-		initialize();
-		dispose();
-	}
-
-	/**
-	 * This object is used to manage the game window. See {@link Window} for
-	 * more details.
-	 */
-	private final Window window = new Window(this);
-	/**
-	 * This object manages time in the game AND runs the game loop. It
-	 * dispatches calls to this object (in the {@link #onTick()} method) which
-	 * then calls ticks on everything else. See {@link Timer} for more details.
-	 */
-	private final Timer timer = new Timer(this);
-	/**
-	 * This object manages the physical world of the game. It stores the
-	 * positions of objects, tiles, and other things in the game. See
-	 * {@link World} for more details.
-	 */
-	private final World world = new World(this);
-
-	/**
-	 * This method is a simple getter for the {@link #window} object.
-	 * 
-	 * @return This Ash object's window.
-	 */
-	public Window getWindow() {
-		return window;
-	}
-
-	/**
-	 * This method is called once every 'tick.' A <code>tick</code> occurs once
-	 * every time the game loop runs. See {@link Timer} and {@link Timer#loop()}
-	 * for more details on ticks and how the game loop is managed.
-	 * 
-	 * @see Timer
-	 * @see Timer#loop()
-	 */
-	public void onTick() {
-		world.onTick();
-		window.onTick();
-
-	}
-
-	/**
-	 * This method is called every time this object's {@link #window} tells the
-	 * game to render things to the screen. The Window schedules render calls on
-	 * each tick by the {@link #timer}. See {@link Window} and {@link Timer} for
-	 * more details.
-	 * 
-	 * <br>
-	 * <br>
-	 * This method takes in a {@link Graphics} object which is used to draw to
-	 * the {@link #window}. Windows use JFrames and JPanels for drawing and
-	 * rendering. See the {@link Window} class for more details.
-	 * 
-	 * @param graphics
-	 *            The Graphics object that's used to draw to the window. See
-	 *            {@link Graphics} for code and methods from the object itself.
-	 * @param observer
-	 *            The JFrame that wrapped by the {@link #window}. This can be
-	 *            used to get the size of the area that is shown to the player
-	 *            or passed into any of the Graphics object's drawImage()
-	 *            methods.
-	 * 
-	 * @see Window
-	 * @see Graphics
-	 * 
-	 * @see Graphics#drawImage(Image, int, int, int, int, int, int, int, int,
-	 *      java.awt.image.ImageObserver)
-	 * @see Graphics#drawImage(Image, int, int, int, int, int, int, int, int,
-	 *      java.awt.Color, java.awt.image.ImageObserver)
-	 * @see Graphics#drawImage(Image, int, int, java.awt.image.ImageObserver)
-	 * @see Graphics#drawImage(Image, int, int, java.awt.Color,
-	 *      java.awt.image.ImageObserver)
-	 * @see Graphics#drawImage(Image, int, int, int, int,
-	 *      java.awt.image.ImageObserver)
-	 * @see Graphics#drawImage(Image, int, int, int, int, java.awt.Color,
-	 *      java.awt.image.ImageObserver)
-	 * 
-	 */
-	void onRender(Graphics graphics, JFrame observer) {
-		// TODO Run onRender code.
-	}
-
-	/**
-	 * This method is a simple getter for this object's {@link #timer} object.
-	 * 
-	 * @return This object's {@link #timer} object.
-	 */
-	public Timer getTimer() {
-		return timer;
-	}
-
-	/**
-	 * This method is called when the game has finished running. It closes the
-	 * window, saves the game, and disposes anything that needs to be disposed
-	 * of. Anything that needs to be run when the game closes should be put put
-	 * in the dispose method of an object.
-	 */
-	private void dispose() {
-		timer.dispose();
-		window.dispose();
-		world.dispose();
-	}
-
-	/**
-	 * This method is called when the program is started. It initializes
-	 * everything and sets up the game. If a save is found (see
-	 * {@link #isFirstLaunch()}), then the save is loaded up in this method.
-	 */
-	private void initialize() {
-		window.initialize();
-		world.initialize();
-		timer.initialize();
-
-		timer.start();
-	}
-
-	/**
 	 * This is a static method used to retrieve a graphical resource (an
 	 * {@link Image}) from the classpath, (specifically, the
 	 * <code>graphics</code> folder).<br>
@@ -208,15 +69,78 @@ public final class Ash {
 	}
 
 	/**
-	 * This method is called by the {@link #window} when a key is typed on the
-	 * keyboard.
-	 * 
-	 * @param e
-	 *            The KeyEvent object of this event. It contains data about this
-	 *            event, like what key was typed.
+	 * This object is used to manage the game window. See {@link Window} for
+	 * more details.
 	 */
-	public void onKeyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+	private final Window window = new Window(this);
+
+	/**
+	 * This object manages time in the game AND runs the game loop. It
+	 * dispatches calls to this object (in the {@link #onTick()} method) which
+	 * then calls ticks on everything else. See {@link Timer} for more details.
+	 */
+	private final Timer timer = new Timer(this);
+	/**
+	 * This object manages the physical world of the game. It stores the
+	 * positions of objects, tiles, and other things in the game. See
+	 * {@link World} for more details.
+	 */
+	private World world = new World(this);
+	/**
+	 * This method is called when the game has finished running. It closes the
+	 * window, saves the game, and disposes anything that needs to be disposed
+	 * of. Anything that needs to be run when the game closes should be put put
+	 * in the dispose method of an object.
+	 */
+	private void dispose() {
+		timer.dispose();
+		window.dispose();
+		world.dispose();
+	}
+
+	/**
+	 * This method is a simple getter for this object's {@link #timer} object.
+	 * 
+	 * @return This object's {@link #timer} object.
+	 */
+	public Timer getTimer() {
+		return timer;
+	}
+
+	/**
+	 * This method is a simple getter for the {@link #window} object.
+	 * 
+	 * @return This Ash object's window.
+	 */
+	public Window getWindow() {
+		return window;
+	}
+
+	/**
+	 * This method is called when the program is started. It initializes
+	 * everything and sets up the game. If a save is found (see
+	 * {@link #isFirstLaunch()}), then the save is loaded up in this method.
+	 */
+	private void initialize() {
+		window.initialize();
+		world.initialize();
+		timer.initialize();
+
+		timer.start();
+	}
+
+	/**
+	 * This method checks if <strong>Ash</strong> has been launched before. It
+	 * looks up the main save file and returns true if the file exists and is
+	 * readable.
+	 * 
+	 * @return <code>true</code> if the game has been launched before,
+	 *         (specifically, if it has found a save data file). Returns
+	 *         <code>false</code> otherwise.
+	 */
+	public boolean isFirstLaunch() {
+		// TODO Check if the game has been launched before.
+		return true;
 	}
 
 	/**
@@ -263,30 +187,14 @@ public final class Ash {
 	}
 
 	/**
-	 * This method is called by the {@link #window} when any of the mouse keys
-	 * are pressed down. (This includes the mouse wheel.)
+	 * This method is called by the {@link #window} when the user holds down a
+	 * mouse button while moving the mouse. (This includes the mouse wheel)
 	 * 
 	 * @param e
-	 *            The MouseEvent object of this event. It contains data about
-	 *            the event, like the position at which it occurred on the
-	 *            screen and which part of the mouse was pressed.
+	 *            The MouseEvent object of this event. It contains information
+	 *            about the event.
 	 */
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * This method is called by the {@link #window} when any of the buttons on
-	 * the mouse are released. (This includes the mouse wheel.)
-	 * 
-	 * @param e
-	 *            The MouseEvent object of this event. It contains data about
-	 *            the event, like the position of the mouse on the screen when
-	 *            the event occurred, and which button on the mouse was
-	 *            released.
-	 */
-	public void mouseReleased(MouseEvent e) {
+	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
@@ -318,19 +226,6 @@ public final class Ash {
 	}
 
 	/**
-	 * This method is called by the {@link #window} when the user holds down a
-	 * mouse button while moving the mouse. (This includes the mouse wheel)
-	 * 
-	 * @param e
-	 *            The MouseEvent object of this event. It contains information
-	 *            about the event.
-	 */
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
 	 * This method is called by the {@link #window} when the mouse is moved.
 	 * 
 	 * @param e
@@ -338,6 +233,35 @@ public final class Ash {
 	 *            about the event.
 	 */
 	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * This method is called by the {@link #window} when any of the mouse keys
+	 * are pressed down. (This includes the mouse wheel.)
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the event, like the position at which it occurred on the
+	 *            screen and which part of the mouse was pressed.
+	 */
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * This method is called by the {@link #window} when any of the buttons on
+	 * the mouse are released. (This includes the mouse wheel.)
+	 * 
+	 * @param e
+	 *            The MouseEvent object of this event. It contains data about
+	 *            the event, like the position of the mouse on the screen when
+	 *            the event occurred, and which button on the mouse was
+	 *            released.
+	 */
+	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
@@ -353,6 +277,86 @@ public final class Ash {
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	/**
+	 * This method is called by the {@link #window} when a key is typed on the
+	 * keyboard.
+	 * 
+	 * @param e
+	 *            The KeyEvent object of this event. It contains data about this
+	 *            event, like what key was typed.
+	 */
+	public void onKeyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * This method is called every time this object's {@link #window} tells the
+	 * game to render things to the screen. The Window schedules render calls on
+	 * each tick by the {@link #timer}. See {@link Window} and {@link Timer} for
+	 * more details.
+	 * 
+	 * <br>
+	 * <br>
+	 * This method takes in a {@link Graphics} object which is used to draw to
+	 * the {@link #window}. Windows use JFrames and JPanels for drawing and
+	 * rendering. See the {@link Window} class for more details.
+	 * 
+	 * @param graphics
+	 *            The Graphics object that's used to draw to the window. See
+	 *            {@link Graphics} for code and methods from the object itself.
+	 * @param observer
+	 *            The JFrame that wrapped by the {@link #window}. This can be
+	 *            used to get the size of the area that is shown to the player
+	 *            or passed into any of the Graphics object's drawImage()
+	 *            methods.
+	 * 
+	 * @see Window
+	 * @see Graphics
+	 * 
+	 * @see Graphics#drawImage(Image, int, int, int, int, int, int, int, int,
+	 *      java.awt.image.ImageObserver)
+	 * @see Graphics#drawImage(Image, int, int, int, int, int, int, int, int,
+	 *      java.awt.Color, java.awt.image.ImageObserver)
+	 * @see Graphics#drawImage(Image, int, int, java.awt.image.ImageObserver)
+	 * @see Graphics#drawImage(Image, int, int, java.awt.Color,
+	 *      java.awt.image.ImageObserver)
+	 * @see Graphics#drawImage(Image, int, int, int, int,
+	 *      java.awt.image.ImageObserver)
+	 * @see Graphics#drawImage(Image, int, int, int, int, java.awt.Color,
+	 *      java.awt.image.ImageObserver)
+	 * 
+	 */
+	void onRender(Graphics graphics, JFrame observer) {
+		// TODO Run onRender code.
+	}
+
+	/**
+	 * This method is called once every 'tick.' A <code>tick</code> occurs once
+	 * every time the game loop runs. See {@link Timer} and {@link Timer#loop()}
+	 * for more details on ticks and how the game loop is managed.
+	 * 
+	 * @see Timer
+	 * @see Timer#loop()
+	 */
+	public void onTick() {
+		world.onTick();
+		window.onTick();
+
+	}
+
+	/**
+	 * This method starts the game. This method will manage everything, from
+	 * starting the game to stopping it.
+	 */
+	public void start() {
+		initialize();
+		dispose();
+	}
+
+	public void stop() {
+		timer.stop();
 	}
 
 }

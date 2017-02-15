@@ -4,14 +4,24 @@ public class Timer {
 
 	private final Ash instance;
 
+	public short time = 0;
+
+	private boolean running;
+
 	public Timer(Ash instance) {
 		this.instance = instance;
 	}
+	
+	void dispose() {
+	}
 
-	void start() {
+	public Ash getInstance() {
+		return instance;
+	}
 
-		running = true;
-		loop();
+	public void initialize() {
+		// TODO Load up time from the save.
+
 	}
 
 	private void loop() {
@@ -21,20 +31,13 @@ public class Timer {
 
 	}
 
-	void dispose() {
+	void start() {
+
+		running = true;
+		loop();
+	}
+
+	void stop(){
 		running = false;
-	}
-
-	public Ash getInstance() {
-		return instance;
-	}
-
-	public short time = 0;
-
-	private boolean running;
-
-	public void initialize() {
-		// TODO Load up time from the save.
-
 	}
 }

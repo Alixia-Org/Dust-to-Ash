@@ -13,19 +13,13 @@ public class GameMouseListener implements MouseListener {
 		this.instance = instance;
 	}
 
+	public Ash getInstance() {
+		return instance;
+	}
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		instance.mouseClicked(e);
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		instance.mousePressed(e);
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		instance.mouseReleased(e);
 	}
 
 	@Override
@@ -38,8 +32,14 @@ public class GameMouseListener implements MouseListener {
 		instance.mouseExited(e);
 	}
 
-	public Ash getInstance() {
-		return instance;
+	@Override
+	public void mousePressed(MouseEvent e) {
+		instance.mousePressed(e);
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		instance.mouseReleased(e);
 	}
 
 }

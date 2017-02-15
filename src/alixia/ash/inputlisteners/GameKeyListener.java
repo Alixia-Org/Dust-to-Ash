@@ -13,9 +13,8 @@ public class GameKeyListener implements KeyListener {
 		this.instance = instance;
 	}
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		instance.onKeyTyped(e);
+	public Ash getInstance() {
+		return instance;
 	}
 
 	@Override
@@ -28,8 +27,9 @@ public class GameKeyListener implements KeyListener {
 		instance.keyReleased(e);
 	}
 
-	public Ash getInstance() {
-		return instance;
+	@Override
+	public void keyTyped(KeyEvent e) {
+		instance.onKeyTyped(e);
 	}
 
 }

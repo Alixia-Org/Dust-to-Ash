@@ -9,12 +9,12 @@ public class GameMouseMotionListener implements MouseMotionListener {
 
 	private final Ash instance;
 
-	public Ash getInstance() {
-		return instance;
-	}
-
 	public GameMouseMotionListener(Ash instance) {
 		this.instance = instance;
+	}
+
+	public Ash getInstance() {
+		return instance;
 	}
 
 	@Override

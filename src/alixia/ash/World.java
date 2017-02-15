@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 
 public class World {
+
 	private final Map overworld, underworld, hell, moon, ocean;
 	private final Ash instance;
 
@@ -18,16 +19,20 @@ public class World {
 		this.instance = instance;
 	}
 
-	public Map getOverworldMap() {
-		return overworld;
-	}
-
-	public Map getUnderworldMap() {
-		return underworld;
+	void dispose() {
+		overworld.dispose();
+		underworld.dispose();
+		hell.dispose();
+		moon.dispose();
+		ocean.dispose();
 	}
 
 	public Map getHellMap() {
 		return hell;
+	}
+
+	public Ash getInstance() {
+		return instance;
 	}
 
 	public Map getMoonMap() {
@@ -38,24 +43,12 @@ public class World {
 		return ocean;
 	}
 
-	public Ash getInstance() {
-		return instance;
+	public Map getOverworldMap() {
+		return overworld;
 	}
 
-	void onTick() {
-		overworld.onTick();
-		underworld.onTick();
-		hell.onTick();
-		moon.onTick();
-		ocean.onTick();
-	}
-
-	void onRender(Graphics graphics, JFrame observer) {
-		overworld.onRender(graphics, observer);
-		underworld.onRender(graphics, observer);
-		hell.onRender(graphics, observer);
-		moon.onRender(graphics, observer);
-		ocean.onRender(graphics, observer);
+	public Map getUnderworldMap() {
+		return underworld;
 	}
 
 	void initialize() {
@@ -66,12 +59,20 @@ public class World {
 		ocean.initialize();
 	}
 
-	void dispose() {
-		overworld.dispose();
-		underworld.dispose();
-		hell.dispose();
-		moon.dispose();
-		ocean.dispose();
+	void onRender(Graphics graphics, JFrame observer) {
+		overworld.onRender(graphics, observer);
+		underworld.onRender(graphics, observer);
+		hell.onRender(graphics, observer);
+		moon.onRender(graphics, observer);
+		ocean.onRender(graphics, observer);
+	}
+
+	void onTick() {
+		overworld.onTick();
+		underworld.onTick();
+		hell.onTick();
+		moon.onTick();
+		ocean.onTick();
 	}
 
 }

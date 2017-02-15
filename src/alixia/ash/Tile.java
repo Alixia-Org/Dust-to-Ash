@@ -24,11 +24,11 @@ public class Tile extends Object{
 	public int getY() {
 		return y;
 	}
-	public void onTick(Ash instance){
+	public void onTick() {
 		
 	}
 
-	public void onTick() {
+	public void onTick(Ash instance){
 		
 	}
 }

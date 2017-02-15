@@ -23,12 +23,47 @@ public class Window {
 	};
 	private JPanel panel = new JPanel();
 
+	private float yPos = 0f;
+
+	private int xPos = 0;
+
+	public Window(Ash instance) {
+		this.instance = instance;
+		initFrame();
+	}
+
 	void dispose() {
 		// TODO Auto-generated method stub
 	}
 
+	public int getCameraXPosition() {
+		return xPos;
+	}
+
+	public float getCameraYPosition() {
+		return yPos;
+	}
+
+	private void initFrame() {
+		frame.addKeyListener(new GameKeyListener(instance));
+
+		frame.addMouseMotionListener(new GameMouseMotionListener(instance));
+		frame.addMouseListener(new GameMouseListener(instance));
+		frame.addMouseWheelListener(new GameMouseWheelListener(instance));
+
+		frame.add(panel);
+	}
 	void initialize() {
 		initFrame();
+	}
+
+	public void moveCamera(int xPos, float yPos) {
+		this.xPos += xPos;
+		this.yPos += yPos;
+	}
+
+	void onTick() {
+		frame.repaint();
 	}
 
 	void start() {
@@ -41,41 +76,6 @@ public class Window {
 			frame.setUndecorated(true);
 		}
 
-	}
-
-	void onTick() {
-		frame.repaint();
-	}
-
-	public Window(Ash instance) {
-		this.instance = instance;
-		initFrame();
-	}
-
-	private void initFrame() {
-		frame.addKeyListener(new GameKeyListener(instance));
-
-		frame.addMouseMotionListener(new GameMouseMotionListener(instance));
-		frame.addMouseListener(new GameMouseListener(instance));
-		frame.addMouseWheelListener(new GameMouseWheelListener(instance));
-
-		frame.add(panel);
-	}
-
-	private float yPos = 0f;
-	private int xPos = 0;
-
-	public void moveCamera(int xPos, float yPos) {
-		this.xPos += xPos;
-		this.yPos += yPos;
-	}
-
-	public float getCameraYPosition() {
-		return yPos;
-	}
-
-	public int getCameraXPosition() {
-		return xPos;
 	}
 
 }
