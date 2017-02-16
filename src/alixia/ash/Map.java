@@ -1,6 +1,7 @@
 package alixia.ash;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.ImageObserver;
 
 import javax.swing.JFrame;
@@ -55,6 +56,7 @@ public class Map {
 	 * This is a 2D array that stores all the tiles in an area.
 	 */
 	private Tile[][] tiles;
+
 	/**
 	 * This is an array that stores whether or not each chunk has been loaded
 	 * already.
@@ -136,6 +138,25 @@ public class Map {
 	 * been generated, its save file is created and its loaded up as needed.
 	 */
 	private void loadMap() {
+
+		Image graphic = Ash.getGraphic("tiles/dirt/dirt_0.png");
+
+		short i1 = 0;
+
+		// tiles rendering & initialization test.
+		for (int i = 0; i < tiles.length; i++) {
+			Tile[] arr = new Tile[20];
+			for (int i0 = 0; i0 < arr.length; i0++) {
+				arr[i0] = new Tile(graphic, i, i0, instance);
+				i1++;
+				if (i1 >= 500) {
+					System.out.println("Hit");
+					i1 = 0;
+				}
+			}
+			tiles[i] = arr;
+		}
+
 		// TODO Load up data from the save if it exists.
 	}
 
@@ -153,7 +174,12 @@ public class Map {
 	 *            as an {@link ImageObserver}.
 	 */
 	void onRender(Graphics graphics, JFrame observer) {
-		// TODO Render things. :D
+		if (type == Type.OVERWORLD)
+			graphics.fillRect(0, 0, observer.getWidth(), observer.getHeight());
+		for (Tile[] array : tiles)
+			for (Tile t : array)
+				if (t != null)
+					t.onRender(graphics, observer);
 	}
 
 	/**

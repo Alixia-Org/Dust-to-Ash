@@ -25,13 +25,13 @@ import alixia.ash.inputlisteners.GameMouseWheelListener;
 public class Window {
 
 	private final Ash instance;
+	private JFrame frame = new JFrame("Dust to Ash...");
 	@SuppressWarnings("serial")
-	private JFrame frame = new JFrame("Dust to Ash...") {
-		public void paintComponents(Graphics g) {
+	private JPanel panel = new JPanel() {
+		public void paintComponent(Graphics g) {
 			instance.onRender(g, frame);
 		};
 	};
-	private JPanel panel = new JPanel();
 
 	private float yPos = 0f;
 
@@ -143,13 +143,15 @@ public class Window {
 	}
 
 	private void initFrame() {
-		frame.addKeyListener(new GameKeyListener(instance));
+		panel.addKeyListener(new GameKeyListener(instance));
 
-		frame.addMouseMotionListener(new GameMouseMotionListener(instance));
-		frame.addMouseListener(new GameMouseListener(instance));
-		frame.addMouseWheelListener(new GameMouseWheelListener(instance));
+		panel.addMouseMotionListener(new GameMouseMotionListener(instance));
+		panel.addMouseListener(new GameMouseListener(instance));
+		panel.addMouseWheelListener(new GameMouseWheelListener(instance));
 
 		frame.add(panel);
+		
+		frame.setResizable(false);
 	}
 
 	void initialize() {
@@ -165,8 +167,10 @@ public class Window {
 		this.yPos += yPos;
 	}
 
-	void onTick() {
-		frame.repaint();
+	void onTick(boolean render) {
+		if (render) 
+			panel.repaint();
+		
 	}
 
 	public void setName(String arg0) {
@@ -193,6 +197,7 @@ public class Window {
 		} else {
 			frame.setSize(gd.getDisplayMode().getWidth(), gd.getDisplayMode().getHeight());
 			frame.setUndecorated(true);
+			frame.setVisible(true);
 		}
 
 	}

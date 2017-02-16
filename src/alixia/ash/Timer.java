@@ -20,6 +20,24 @@ public class Timer {
 	 */
 	private final Ash instance;
 
+	private boolean physics = true, rendering = true;
+
+	public void pausePhysics() {
+		physics = false;
+	}
+
+	public void resumePhysics() {
+		physics = true;
+	}
+
+	public void pauseRendering() {
+		rendering = false;
+	}
+
+	public void resumeRendering() {
+		rendering = true;
+	}
+
 	/**
 	 * The time of the day stored from 0 to 15000. (From 12:00 AM day one, to
 	 * 12:00 AM day two.)
@@ -73,9 +91,8 @@ public class Timer {
 	}
 
 	private void loop() {
-		while (running) {
-			instance.onTick();
-		}
+		while (running)
+			instance.onTick(physics, rendering);
 
 	}
 

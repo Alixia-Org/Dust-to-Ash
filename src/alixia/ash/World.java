@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 public class World {
 
 	private final Map overworld, underworld, hell, moon, ocean;
+	private Map currentMap;
 	private final Ash instance;
 
 	public World(Ash instance) {
@@ -15,6 +16,8 @@ public class World {
 		hell = new Map(instance, Map.Type.HELL);
 		moon = new Map(instance, Map.Type.MOON);
 		ocean = new Map(instance, Map.Type.OCEAN);
+
+		currentMap = overworld;
 
 		this.instance = instance;
 	}
@@ -60,11 +63,7 @@ public class World {
 	}
 
 	void onRender(Graphics graphics, JFrame observer) {
-		overworld.onRender(graphics, observer);
-		underworld.onRender(graphics, observer);
-		hell.onRender(graphics, observer);
-		moon.onRender(graphics, observer);
-		ocean.onRender(graphics, observer);
+		currentMap.onRender(graphics, observer);
 	}
 
 	void onTick() {

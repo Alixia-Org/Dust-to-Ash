@@ -127,6 +127,7 @@ public final class Ash {
 		world.initialize();
 		timer.initialize();
 
+		window.start();
 		timer.start();
 	}
 
@@ -157,8 +158,8 @@ public final class Ash {
 	 * @see #onKeyReleased(KeyEvent)
 	 */
 	public void onKeyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+			timer.stop();
 	}
 
 	/**
@@ -330,7 +331,8 @@ public final class Ash {
 	 * 
 	 */
 	void onRender(Graphics graphics, JFrame observer) {
-		// TODO Run onRender code.
+		System.out.println("hi");
+		world.onRender(graphics, observer);
 	}
 
 	/**
@@ -338,12 +340,18 @@ public final class Ash {
 	 * every time the game loop runs. See {@link Timer} and {@link Timer#loop()}
 	 * for more details on ticks and how the game loop is managed.
 	 * 
+	 * @param physics
+	 *            A boolean determining whether or not to run any physics.
+	 * @param rendering
+	 *            A boolean determining whether or not to run any rendering.
+	 * 
 	 * @see Timer
 	 * @see Timer#loop()
 	 */
-	public void onTick() {
-		world.onTick();
-		window.onTick();
+	public void onTick(boolean physics, boolean rendering) {
+		if (physics)
+			world.onTick();
+		window.onTick(rendering);
 
 	}
 
