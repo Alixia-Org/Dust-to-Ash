@@ -41,7 +41,7 @@ div.navDiv {
 }
 nav {
 	background-color: #000000;
-	border: 2px solid #FFFFFF;
+	border: 3.8px solid #FFFFFF;
 	position: absolute;
 	height: 30px;
 	width: 99.4%;
@@ -51,10 +51,21 @@ nav {
 	top: 0px;
 	right: 0px;
 	overflow: visible;
-	transition: background-color 1.8s ease-out;
+	transition: background-color 0.6s ease-in-out;
 }
 	nav:hover{
-		background-color:gray;
+		background-color:darkgray;
+	}
+	#navDiv{
+		border-color:white;
+		border-radius:5px;
+		border-width:4px;
+		background-color:white;
+		width:75%;
+		height: 900px;
+		transition: background-color 0.8s ease-in;
+		background-color:black;
+		
 	}
 </style>
 </head>
@@ -63,5 +74,6 @@ nav {
 <nav>
   <div class="navDiv"> <span class="navSpan">Home</span> <span class="navSpan">GitHub</span> <span class="navSpan">Wiki</span> </div>
 </nav>
+	<div id="WrapperDiv">Test Content</div>
 </body>
 </html>
