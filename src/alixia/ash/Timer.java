@@ -21,6 +21,82 @@ public class Timer {
 	private final Ash instance;
 
 	/**
+	 * This variable determines whether or not to run physics. This variable can
+	 * be set to false to prevent physics functions from being called using
+	 * {@link #pausePhysics()}. {@link #resumePhysics()} will set this variable
+	 * to true and resume the game's physics.
+	 */
+	private boolean physics = true;
+	/**
+	 * This variable determines whether or not rendering updates will be
+	 * performed. If this is set to false, the window will not repaint,
+	 * therefore, the screen will be a stale image until this variable is set to
+	 * true. Modifying this variable can be done using {@link #pauseRendering()}
+	 * and {@link #resumeRendering()}.
+	 */
+	private boolean rendering = true;
+
+	/**
+	 * Pauses physics functions in the game. See the game loop and the
+	 * {@link #physics} variable for more details. Physics can be resumed using
+	 * the {@link #resumePhysics()} variable.
+	 * 
+	 * @see #loop()
+	 * @see #resumePhysics()
+	 * @see #pauseRendering()
+	 * @see #resumeRendering()
+	 * @see #physics
+	 */
+	public void pausePhysics() {
+		physics = false;
+	}
+
+	/**
+	 * Resumes physics calculations in the game. See the game loop and the
+	 * {@link #physics} variable for more details. Physics can be paused using
+	 * {@link #pausePhysics()}.
+	 * 
+	 * @see #loop()
+	 * @see #pausePhysics()
+	 * @see #pauseRendering()
+	 * @see #resumeRendering()
+	 * @see #physics
+	 */
+	public void resumePhysics() {
+		physics = true;
+	}
+
+	/**
+	 * Pauses rendering in the game. See the game loop and the
+	 * {@link #rendering} variable for more details. Rendering can be resumed
+	 * using the {@link #resumeRendering()} method.
+	 * 
+	 * @see #loop()
+	 * @see #resumeRendering()
+	 * @see #pausePhysics()
+	 * @see #resumePhysics()
+	 * @see #rendering
+	 */
+	public void pauseRendering() {
+		rendering = false;
+	}
+
+	/**
+	 * Resumes rendering in the game. See the game loop and the
+	 * {@link #rendering} variable for more details. Rendering can be paused
+	 * using the {@link #pauseRendering()} method.
+	 * 
+	 * @see #loop()
+	 * @see #pauseRendering()
+	 * @see #pausePhysics()
+	 * @see #resumePhysics()
+	 * @see #rendering
+	 */
+	public void resumeRendering() {
+		rendering = true;
+	}
+
+	/**
 	 * The time of the day stored from 0 to 15000. (From 12:00 AM day one, to
 	 * 12:00 AM day two.)
 	 */
@@ -53,7 +129,7 @@ public class Timer {
 	 * This method is called when the Timer is ready to be disposed of and the
 	 * game is closing.
 	 */
-	void dispose() {
+	public void dispose() {
 		// TODO Dispose of Timer.
 	}
 
@@ -67,25 +143,35 @@ public class Timer {
 		return instance;
 	}
 
+	/**
+	 * This method is called when the program is loading up. It loads up any
+	 * data that this class needs to run.
+	 */
 	public void initialize() {
 		// TODO Load up time from the save.
 
 	}
 
+	/**
+	 * This is the game loop. It calls the {@link #instance}'s
+	 * {@link Ash#onTick(boolean, boolean)} method which then goes down a chain
+	 * and executes other onTick methods. It passes in whether or not to run
+	 * physics and render to the screen to its {@link #instance}'s onTick
+	 * method.
+	 */
 	private void loop() {
-		while (running) {
-			instance.onTick();
-		}
+		while (running)
+			instance.onTick(physics, rendering);
 
 	}
 
-	void start() {
+	public void start() {
 
 		running = true;
 		loop();
 	}
 
-	void stop() {
+	public void stop() {
 		running = false;
 	}
 }
