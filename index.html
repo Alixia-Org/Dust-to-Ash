@@ -2,14 +2,17 @@
 <head>
 <title>Dust to Ash...</title>
 <style type="text/css">
-.navDiv {
+body {
+	background: black;
+}
+.navSpan {
 	font-size: 18px;
 	font-style: normal;
 	font-weight: bold;
 	color: #FFFFFF;
 	background-color: #000000;
-	letter-spacing: .22em;
-	vertical-align: 35%;
+	letter-spacing: .03em;
+	vertical-align: center;
 	word-spacing: .67em;
 	display: inline-block;
 	width: auto;
@@ -22,32 +25,40 @@
 	-o-transition: text-shadow 2.5s ease-out;
 	transition: text-shadow 2.5s ease-out;
 }
+div.navDiv {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+.navSpan {
+	display: table-cell;
+	text-align: center;
+}
+.navSpan:first-child {
+	text-align: left;
+}
+.navSpan:last-child {
+	text-align: right;
+}
 nav {
 	background-color: #000000;
 	border: 2px solid #FFFFFF;
 	position: absolute;
 	height: 30px;
-	width: 100%;
+	width: 99.4%;
 	padding-right: 5px;
 	padding-left: 5px;
 	left: 0px;
-	top: 19px;
+	top: 0px;
 	right: 0px;
+	overflow: visible;
 }
 </style>
 </head>
 
 <body>
 <nav>
-  <ul>
-    <li>
-      <div class="navDiv">Home</div>
-    </li>
-  </ul>
+  <div class="navDiv"> <span class="navSpan">Home</span> <span class="navSpan">GitHub</span> <span class="navSpan">Wiki</span> </div>
 </nav>
-<style>
-	body{
-	background: black;}
-</style>
 </body>
 </html>
