@@ -117,8 +117,7 @@ public class Tile extends Object {
 		// resources.)
 		if (rendX <= observer.getWidth() && rendX >= 0 && rendY <= observer.getHeight() && rendY >= 0)
 			// Actually draw the image.
-			graphics.drawImage(icon, x * 100 - instance.getWindow().getCameraXPosition(),
-					(int) (y * 100 - instance.getWindow().getCameraYPosition()), 100, 100, observer);
+			graphics.drawImage(icon, rendX, rendY + 500, 100, 100, observer);
 
 	}
 

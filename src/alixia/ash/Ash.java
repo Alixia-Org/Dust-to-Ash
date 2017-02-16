@@ -331,7 +331,6 @@ public final class Ash {
 	 * 
 	 */
 	public void onRender(Graphics graphics, JFrame observer) {
-		System.out.println("hi");
 		world.onRender(graphics, observer);
 	}
 
@@ -367,5 +366,51 @@ public final class Ash {
 	public void stop() {
 		timer.stop();
 	}
+
+	/**
+	 * This 'ratio' is used to scale things to the size of the screen (using the
+	 * 1920x1080 resolution.)<br>
+	 * <br>
+	 * 
+	 * Example: Lets say you want the program to stop when the user moves the
+	 * mouse to the top 1/8th of the screen. In the common resolution of
+	 * 1920x1080, the top 1/8th of the screen would be from 0 (the very top) to
+	 * 135px down. So, if the user runs their game with a resolution of
+	 * 1920x1080, we would have our code set up so that it will detect mouse
+	 * movement within the coordinates 0 to 135 on the y axis (height). But what
+	 * if they run the game in 4k (3840 x 2160)? <br>
+	 * <br>
+	 * Quick solution for this (if you don't care to know how it works) is that
+	 * you can take your original numbers (0 to 135) and multiply them by
+	 * {@link #SCREEN_HEIGHT_RATIO}. The 0 multiplied by the ratio is 0..., and
+	 * the 135 multiplied by this ratio will give 270... (2160 / 8 is 270) This
+	 * gives you 1/8th of the screen.<br>
+	 * <br>
+	 * Now, you've probably already guessed that the actual value of this ratio
+	 * would be 2 if you ran the game in 4k. When you multiply a number (like
+	 * 135) by the height ratio, what's happening is that: <br>
+	 * <br>
+	 * The number you multiply (135 in this example) is divided by 1920, then
+	 * the result is multiplied by the screen size. So if you imagine this as a
+	 * sequence of steps...<br>
+	 * <br>
+	 * <ul>
+	 * <li>First you would take out the <code>1080</code> from the number 135.
+	 * This leaves you with a decimal. This decimal <strong>is a portion of the
+	 * screen</strong> so if you multiply the screen size (1080) by this
+	 * decimal, you will get your number (135). 135 is 1/8th of 1080, so this
+	 * decimal will be equal to 1/8.</li>
+	 * <li>Second, you would simply multiply this portion by the actual size of
+	 * the screen (which could be whatever but for now I'll use 2160) to get the
+	 * area you want. (270)</li>
+	 * </ul>
+	 * <br>
+	 * <br>
+	 * This is probably the most I've ever documented on a single variable. Have
+	 * fun reading all this. Also, if someone reports this method as "not in
+	 * depth enough" then I'll probably kill myself.
+	 */
+	public final float SCREEN_WIDTH_RATIO = (float) 1 / 1920 * window.getWindowWidth(),
+			SCREEN_HEIGHT_RATIO = (float) 1 / 1080 * window.getWindowHeight();
 
 }

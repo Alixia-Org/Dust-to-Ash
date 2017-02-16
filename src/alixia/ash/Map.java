@@ -150,7 +150,6 @@ public class Map {
 				arr[i0] = new Tile(graphic, i, i0, instance);
 				i1++;
 				if (i1 >= 500) {
-					System.out.println("Hit");
 					i1 = 0;
 				}
 			}
