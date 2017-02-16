@@ -6,43 +6,45 @@ body {
 	background: black;
 }
 .navSpan {
+	background-color: transparent;
 	font-size: 36px;
 	font-style: normal;
 	font-weight: bold;
 	color: #FFFFFF;
 	background-color: #000000;
-	letter-spacing: .03em;
-	vertical-align: center;
-	word-spacing: .67em;
+	letter-spacing: 0.03em;
+	word-spacing: 0.67em;
 	display: inline-block;
 	width: auto;
 	visibility: visible;
 	height: auto;
 	cursor: default;
-	-webkit-transition: text-shadow 2.5s ease-out;
-	-moz-transition: text-shadow 2.5s ease-out;
-	-ms-transition: text-shadow 2.5s ease-out;
-	-o-transition: text-shadow 2.5s ease-out;
-	transition: text-shadow 2.5s ease-out;
-}
-div.navDiv {
-	display: table;
-	width: 100%;
-}
-.navSpan {
 	display: table-cell;
+	padding-top: 9px;
 	text-align: center;
 	font-family: acme;
 	font-size: 24px;
 	font-weight: 400;
 	color: #FFFFFF;
 	font-style: normal;
+	-webkit-transition: color 0.8s ease-in-out;
+	-moz-transition: color 0.8s ease-in-out;
+	-ms-transition: color 0.8s ease-in-out;
+	-o-transition: color 0.8s ease-in-out;
+	transition: color 0.8s ease-in-out;
+}
+.navSpan:hover {
+	color: red;
 }
 .navSpan:first-child {
-	text-align: left;
+	margin-left: 3px;
 }
 .navSpan:last-child {
-	text-align: right;
+	margin-right: 3px;
+}
+div#navDiv {
+	display: table;
+	width: 100%;
 }
 nav {
 	background-color: #000000;
@@ -57,6 +59,9 @@ nav {
 	right: 0px;
 	overflow: visible;
 }
+.navSpan {
+	cursor: pointer;
+}
 </style>
 <!--The following script tag downloads a font from the free fonts server for use within the web page. We recommend that you do not modify it.-->
 <script src="http://webfonts.creativecloud.com/acme:n4:default.js" type="text/javascript"></script>
@@ -64,7 +69,7 @@ nav {
 
 <body>
 <nav>
-  <div class="navDiv"> <span class="navSpan">Home</span> <span class="navSpan">GitHub</span> <span class="navSpan">Wiki</span> </div>
+  <div id="navDiv"> <span style="cursor:pointer" onclick="location.href='http://DustToAsh.org';" class="navSpan">Home</span> <span style="cursor:pointer" onclick="location.href='http://github.com/Alixia-Org/Dust-to-Ash';" class="navSpan">GitHub</span> <span onclick="location.href='http://github.com/Alixia-Org/Dust-to-Ash/wiki';" class="navSpan">Wiki</span> </div>
 </nav>
 </body>
 </html>
