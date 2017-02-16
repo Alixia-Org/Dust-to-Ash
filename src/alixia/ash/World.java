@@ -22,7 +22,7 @@ public class World {
 		this.instance = instance;
 	}
 
-	void dispose() {
+	public void dispose() {
 		overworld.dispose();
 		underworld.dispose();
 		hell.dispose();
@@ -54,7 +54,7 @@ public class World {
 		return underworld;
 	}
 
-	void initialize() {
+	public void initialize() {
 		overworld.initialize();
 		underworld.initialize();
 		hell.initialize();
@@ -62,11 +62,11 @@ public class World {
 		ocean.initialize();
 	}
 
-	void onRender(Graphics graphics, JFrame observer) {
+	public void onRender(Graphics graphics, JFrame observer) {
 		currentMap.onRender(graphics, observer);
 	}
 
-	void onTick() {
+	public void onTick() {
 		overworld.onTick();
 		underworld.onTick();
 		hell.onTick();

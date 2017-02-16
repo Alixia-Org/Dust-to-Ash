@@ -78,7 +78,7 @@ public class Window {
 		return frame.contains(arg0);
 	}
 
-	void dispose() {
+	public void dispose() {
 		// TODO Auto-generated method stub
 	}
 
@@ -154,7 +154,7 @@ public class Window {
 		frame.setResizable(false);
 	}
 
-	void initialize() {
+	public void initialize() {
 		initFrame();
 	}
 
@@ -167,7 +167,7 @@ public class Window {
 		this.yPos += yPos;
 	}
 
-	void onTick(boolean render) {
+	public void onTick(boolean render) {
 		if (render) 
 			panel.repaint();
 		
@@ -189,7 +189,7 @@ public class Window {
 		frame.setTitle(arg0);
 	}
 
-	void start() {
+	public void start() {
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		if (gd.isFullScreenSupported()) {
 			frame.setIgnoreRepaint(true);

@@ -112,7 +112,7 @@ public class Map {
 	 * This method is called when the game is closing. It saves the map and
 	 * finishes anything that needs to be finished.
 	 */
-	void dispose() {
+	public void dispose() {
 		// TODO Save map and dispose of anythinig.
 	}
 
@@ -128,7 +128,7 @@ public class Map {
 	/**
 	 * This method is called when this map needs to be loaded up.
 	 */
-	void initialize() {
+	public void initialize() {
 		// Load the map if it has already been generated.
 		loadMap();
 	}
@@ -173,7 +173,7 @@ public class Map {
 	 *            be passed to any of the Graphics object's drawImage functions
 	 *            as an {@link ImageObserver}.
 	 */
-	void onRender(Graphics graphics, JFrame observer) {
+	public void onRender(Graphics graphics, JFrame observer) {
 		if (type == Type.OVERWORLD)
 			graphics.fillRect(0, 0, observer.getWidth(), observer.getHeight());
 		for (Tile[] array : tiles)
@@ -190,7 +190,7 @@ public class Map {
 	 * This method runs whatever it needs to each tick and then calls the tick
 	 * method of each game object that it owns.
 	 */
-	void onTick() {
+	public void onTick() {
 
 	}
 }

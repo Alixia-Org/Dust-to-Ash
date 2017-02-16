@@ -330,7 +330,7 @@ public final class Ash {
 	 *      java.awt.image.ImageObserver)
 	 * 
 	 */
-	void onRender(Graphics graphics, JFrame observer) {
+	public void onRender(Graphics graphics, JFrame observer) {
 		System.out.println("hi");
 		world.onRender(graphics, observer);
 	}

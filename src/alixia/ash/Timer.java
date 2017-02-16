@@ -71,7 +71,7 @@ public class Timer {
 	 * This method is called when the Timer is ready to be disposed of and the
 	 * game is closing.
 	 */
-	void dispose() {
+	public void dispose() {
 		// TODO Dispose of Timer.
 	}
 
@@ -96,13 +96,13 @@ public class Timer {
 
 	}
 
-	void start() {
+	public void start() {
 
 		running = true;
 		loop();
 	}
 
-	void stop() {
+	public void stop() {
 		running = false;
 	}
 }
