@@ -113,6 +113,12 @@ public class Tile extends Object {
 
 	}
 
+	/**
+	 * This method is called whenever the game ticks. Ticking is handled by a
+	 * Timer. See the {@link Timer} class for more details.
+	 * 
+	 * @see Timer
+	 */
 	public void onTick() {
 		return;
 	}
