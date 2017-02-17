@@ -396,7 +396,7 @@ public final class Ash {
 	 * <br>
 	 * <ul>
 	 * <li>First you would take out the <code>1080</code> from the number 135.
-	 * This leaves you with a decimal. This decimal <strong>is a portion of the
+	 * This leaves you with a decimal. This decimal <strong>represents a portion of the
 	 * screen</strong> so if you multiply the screen size (1080) by this
 	 * decimal, you will get your number (135). 135 is 1/8th of 1080, so this
 	 * decimal will be equal to 1/8.</li>
