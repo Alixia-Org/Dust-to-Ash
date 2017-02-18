@@ -17,5 +17,13 @@ public final class ItemRegistry {
 		return registry.items.size();
 	}
 	
-	public static Item 
+	public static Item getItem(int id, short count){
+		Item item = null;
+		try{
+		}catch (ArrayIndexOutOfBoundsException e) {
+			// TODO: handle exception
+		}
+		
+		return item;
+	}
 }
