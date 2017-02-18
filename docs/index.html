@@ -1,38 +1,36 @@
+<!DOCTYPE html>
+
 <html>
 <head>
 <title>Dust to Ash...</title>
 <style type="text/css">
 body {
-	background: black;
+	background: #000;
+	padding-bottom: 6rem;
 }
 .navSpan {
+	-moz-transition: color .8s ease-in-out;
+	-ms-transition: color .8s ease-in-out;
+	-o-transition: color .8s ease-in-out;
+	-webkit-transition: color .8s ease-in-out;
+	transition: color .8s ease-in-out;
+	background-color: #000;
+	color: #FFF;
 	cursor: pointer;
-	background-color: transparent;
-	font-size: 36px;
-	font-style: normal;
-	font-weight: bold;
-	color: #FFFFFF;
-	background-color: #000000;
-	letter-spacing: 0.03em;
-	word-spacing: 0.67em;
-	display: inline-block;
-	width: auto;
-	visibility: visible;
-	height: auto;
-	cursor: default;
 	display: table-cell;
-	padding-top: 9px;
-	text-align: center;
 	font-family: acme;
 	font-size: 24px;
-	font-weight: 400;
-	color: #FFFFFF;
 	font-style: normal;
-	-webkit-transition: color 0.8s ease-in-out;
-	-moz-transition: color 0.8s ease-in-out;
-	-ms-transition: color 0.8s ease-in-out;
-	-o-transition: color 0.8s ease-in-out;
-	transition: color 0.8s ease-in-out;
+	font-weight: 400;
+	height: auto;
+	letter-spacing: .03em;
+	padding-bottom: 11.4px;
+	padding-top: 9px;
+	text-align: center;
+	transition: color .8s ease-in-out;
+	visibility: visible;
+	width: auto;
+	word-spacing: .67em;
 }
 .navSpan:hover {
 	color: red;
@@ -48,17 +46,51 @@ div#navDiv {
 	width: 100%;
 }
 nav {
-	background-color: #000000;
-	border: 2px solid #FFFFFF;
-	position: absolute;
+	background-color: #000;
+	border: 3px solid #FFF;
 	height: 50px;
-	width: calc(100%-6px);
-	padding-right: 5px;
+	left: 0;
 	padding-left: 5px;
-	left: 0px;
-	top: 0px;
-	right: 0px;
-	overflow: visible;
+	padding-right: 5px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: calc(100%-6px);
+	width: calc(100% - 6px);
+}
+footer {
+	background-color: #505050;
+	border-top-color: #FFF;
+	border-top-width: 3px;
+	border-top-style: solid;
+	color: #FFF;
+	height: 163px;
+	left: 0;
+	padding: 1rem;
+	padding-left: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+#content-box {
+	background-color: #black;
+	border-color: white;
+	border-width: 3px;
+	border-style: solid;
+	color: #FFF;
+	height: 800px;
+	margin: 100px 5% 110px 5%;
+	top: 100px;
+	width: 90%;
+	text-align: center;
+	-webkit-transition: background-color 0.6s ease-in-out 0s;
+	-moz-transition: background-color 0.6s ease-in-out 0s;
+	-ms-transition: background-color 0.6s ease-in-out 0s;
+	-o-transition: background-color 0.6s ease-in-out 0s;
+	transition: background-color 0.6s ease-in-out 0s;
+}
+#content-box:hover {
+	background-color: #0A0A0A;
 }
 </style>
 <!--The following script tag downloads a font from the free fonts server for use within the web page. We recommend that you do not modify it.-->
@@ -69,10 +101,7 @@ nav {
 <nav>
   <div id="navDiv"> <span style="cursor:pointer" onclick="location.href='http://DustToAsh.org';" class="navSpan">Home</span> <span style="cursor:pointer" onclick="location.href='http://github.com/Alixia-Org/Dust-to-Ash';" class="navSpan">GitHub</span> <span onclick="location.href='http://github.com/Alixia-Org/Dust-to-Ash/wiki';" class="navSpan">Wiki</span> </div>
 </nav>
-	
-	<div style="color:black;background-color:white;">Test</div>
-	
+<div id="content-box">Test</div>
 </body>
-	
-	<footer style="color:black;background-color:white;">Test2</footer>
+<footer>Test2</footer>
 </html>
