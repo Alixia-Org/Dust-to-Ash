@@ -9,8 +9,6 @@ import java.awt.event.MouseWheelEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import alixia.ash.items.ItemManager;
-
 /**
  * The main class for <strong>Dust to Ash...</strong> This class is instantiated
  * and its {@link #start()} method is called to launch the game.<br>

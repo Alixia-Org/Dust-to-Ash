@@ -4,11 +4,13 @@ import java.awt.Image;
 
 public abstract class ItemTemplate {
 	private String name;
+	private String defaultTooltip;
 	protected Image texture;
 
-	public ItemTemplate(String name, Image texture) {
+	protected ItemTemplate(String name, Image texture, String defaultTooltip) {
 		setName(name);
 		setTexture(texture);
+		setDefaultTooltip(defaultTooltip);
 	}
 
 	public String getName() {
@@ -25,6 +27,18 @@ public abstract class ItemTemplate {
 
 	public void setTexture(Image texture) {
 		this.texture = texture;
+	}
+
+	public void onTick(Storable items) {
+
+	}
+
+	String getDefaultTooltip() {
+		return defaultTooltip;
+	}
+
+	public void setDefaultTooltip(String defaultTooltip) {
+		this.defaultTooltip = defaultTooltip;
 	}
 
 }
