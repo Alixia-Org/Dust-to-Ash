@@ -155,6 +155,9 @@ public class Map {
 			}
 			tiles[i] = arr;
 		}
+		// Tiles "has area been loaded" initialization test.
+		for (int i = 0; i < loadedChunks.length; i++)
+			loadedChunks[i] = true;
 
 		// TODO Load up data from the save if it exists.
 	}
