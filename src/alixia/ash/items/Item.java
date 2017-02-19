@@ -1,6 +1,6 @@
 package alixia.ash.items;
 
-public class Item {
+public class Item implements Storable {
 	private short count;
 	private ItemTemplate item;
 
@@ -8,10 +8,9 @@ public class Item {
 		return count;
 	}
 
-	public Item(ItemTemplate template, short count) {
+	Item(ItemTemplate template, short count) {
 		this.count = count;
 		item = template;
 	}
-	
-	 
+
 }

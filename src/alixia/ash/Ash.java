@@ -9,7 +9,7 @@ import java.awt.event.MouseWheelEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import alixia.ash.items.ItemRegistry;
+import alixia.ash.items.ItemManager;
 
 /**
  * The main class for <strong>Dust to Ash...</strong> This class is instantiated

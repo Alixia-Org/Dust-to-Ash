@@ -1,5 +1,5 @@
 package alixia.ash.items;
 
-public class ItemStack {
+public class ItemStack implements Storable {
 
 }
