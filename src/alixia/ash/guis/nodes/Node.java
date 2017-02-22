@@ -1,5 +1,7 @@
 package alixia.ash.guis.nodes;
 
+import java.awt.event.MouseEvent;
+
 public class Node {
 	private short x, y;
 
@@ -14,5 +16,8 @@ public class Node {
 
 	public final short getY() {
 		return y;
+	}
+	public void onClick(MouseEvent event){
+
 	}
 }

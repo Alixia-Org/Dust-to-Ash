@@ -2,10 +2,11 @@ package alixia.ash.guis.nodes;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 
-public class Button extends Node {
+public class Button extends RectangleNode {
 	private Image icon;
 
 	public Button(Image icon, short x, short y) {
@@ -21,4 +22,14 @@ public class Button extends Node {
 		// TODO Render
 	}
 
+	@Override
+	public final void onClick(MouseEvent event) {
+		super.onClick(event);
+		if (doesPointCross((short) event.getX(), (short) event.getY()))
+			;
+	}
+
+	public void onClick() {
+
+	}
 }

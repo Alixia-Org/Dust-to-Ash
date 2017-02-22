@@ -1,5 +1,7 @@
 package alixia.ash.guis.nodes;
 
+import java.awt.Point;
+
 public class RectangleNode extends Node {
 	private short endX, endY;
 
@@ -17,8 +19,13 @@ public class RectangleNode extends Node {
 		return endY;
 	}
 
-	public boolean doesPointCross(short x, short y){
-		//TODO: Check if given positions are inside this Rectangular Node.
+	public boolean doesPointCross(short x, short y) {
+		// TODO: Check if given positions are inside this Rectangular Node.
+		return x > getX() && getX() < endX && y > getY() && y < endY;
+	}
+
+	public boolean doesPointCross(Point point) {
+		return doesPointCross((short) point.getX(), (short) point.getY());
 	}
 
 }
