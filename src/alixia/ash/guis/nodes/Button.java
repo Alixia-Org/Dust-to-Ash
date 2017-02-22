@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 public class Button extends RectangleNode {
 	private Image icon;
 
-	public Button(Image icon, short x, short y) {
-		super(x, y);
+	public Button(Image icon, short x, short y, short par4, short par5, boolean size) {
+		super(x, y, par4, par5, size);
 		this.icon = icon;
 	}
 
@@ -31,5 +31,10 @@ public class Button extends RectangleNode {
 
 	public void onClick() {
 
+	}
+
+	@Override
+	public void render(Graphics graphicsObject, JFrame frame) {
+		graphicsObject.drawImage(icon, getX(), getY(), getLength(), getWidth(), frame);
 	}
 }
