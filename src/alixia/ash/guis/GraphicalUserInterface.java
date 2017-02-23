@@ -1,6 +1,7 @@
 package alixia.ash.guis;
 
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -21,8 +22,8 @@ public class GraphicalUserInterface {
 		// TODO Render
 	}
 
-	public void onClick() {
-
+	public void onClick(MouseEvent event) {
+		for(Node n:nodes)n.onClick(event);
 	}
 
 }

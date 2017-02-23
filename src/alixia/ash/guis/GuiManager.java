@@ -23,7 +23,7 @@ public class GuiManager {
 	}
 
 	public void onClick(MouseEvent event) {
-		currentGui.onClick();
+		currentGui.onClick(event);
 	}
 
 }
