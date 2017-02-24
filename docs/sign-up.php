@@ -1,3 +1,4 @@
+<?php include("templates/var_defs.php");?>
 <?php include("templates/page_top.php");?>
 <p3>Login Crap</p3>
 <p5>will go here to ensure a succ sessfull login by the user.<p5>

@@ -1,3 +1,4 @@
+<?php include("templates/var_defs.php");?>
 <?php include("templates/page_top.php");?>
   <style type="text/css">
     @keyframes content-slide-in-from-left {
