@@ -1,6 +1,6 @@
 <?php include("templates/var_defs.php");?>
 <?php include("templates/page_top.php");?>
-  <style type="text/css">
+    <style type="text/css">
     @keyframes content-slide-in-from-left {
       from {
         background-position-x: -100vw;
@@ -57,8 +57,10 @@
     }
 
   </style>
+    <?php $footerCode[sizeof(
+  $footerCode)] = "This is some injected footer text!"; ?>
     <div id="content-1" class="contentPanes">This is the first content pane on this page.</div>
     <div id="content-2" class="contentPanes">This is the second content pane on this page.</div>
     <div id="content-3" class="contentPanes">This is the third content pane on this page.</div>
     <div id="content-4" class="contentPanes">This is the last content pane on this page.</div>
-<?php include("templates/page_bottom.php");?>
+    <?php include("templates/page_bottom.php");?>
