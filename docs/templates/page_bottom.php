@@ -1,5 +1,9 @@
 </div>
 </body>
-<footer><?php echo($footerCode);?></footer>
-
+<footer>
+  <?php foreach($footerCode as $piece_of_code){
+	echo $piece_of_code;
+	}
+?>
+</footer>
 </html>
