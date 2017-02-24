@@ -57,8 +57,7 @@
     }
 
   </style>
-    <?php $footerCode[sizeof(
-  $footerCode)] = "This is some injected footer text!"; ?>
+    <?php addFooterCode("This is some footer code injected with a new method!"); ?>
     <div id="content-1" class="contentPanes">This is the first content pane on this page.</div>
     <div id="content-2" class="contentPanes">This is the second content pane on this page.</div>
     <div id="content-3" class="contentPanes">This is the third content pane on this page.</div>
