@@ -12,7 +12,7 @@
   ga('send', 'pageview');
 
 </script>
-<title>Dust to Ash...</title>
+<title>Dust to Ash</title>
 <style type="text/css">
 body {
 	background: #000;
@@ -99,6 +99,15 @@ footer {
 	-o-transition: background-color 0.6s ease-in-out 0s;
 	transition: background-color 0.6s ease-in-out 0s;
 }
+	
+	
+	
+@keyframes content-slide-in{
+	from{background-position:-500px 0px;}to{background-position:0% 0%;}
+	}
+	
+	#content-1{background-color:red;background-position:-500px 0px;animation:content-slide-in 8s;}
+	
 #content-box:hover {
 	background-color: #0A0A0A;
 }
@@ -111,7 +120,9 @@ footer {
 <nav>
   <div id="navDiv"> <span style="cursor:pointer" onclick="location.href='http://DustToAsh.org';" class="navSpan">Home</span> <span style="cursor:pointer" onclick="location.href='http://github.com/Alixia-Org/Dust-to-Ash';" class="navSpan">GitHub</span> <span onclick="location.href='http://github.com/Alixia-Org/Dust-to-Ash/wiki';" class="navSpan">Wiki</span> </div>
 </nav>
-<div id="content-box">Test</div>
+<div id="content-box">
+	<div id="content-1" style="height:25%">Test</div>
+	</div>
 </body>
 <footer>Test2</footer>
 </html>

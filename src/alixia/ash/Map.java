@@ -139,7 +139,7 @@ public class Map {
 	 */
 	private void loadMap() {
 
-		Image graphic = Ash.getGraphic("tiles/dirt/dirt_0.png");
+		Image graphic = Ash.getGraphic("tiles/dirt/dirt_d.png");
 
 		short i1 = 0;
 
