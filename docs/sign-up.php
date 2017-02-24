@@ -1,12 +1,5 @@
-<!DOCTYPE html>
+<?php include("templates/page_top.html");?>
 
-<html>
-  <head>
-  
-  <title>Sign Up</title>
-  <link rel="stylesheet" type="text/css" href="boilerplate.css" media="screen"/>
-  
-  </head>
-  <body>
-    <div id="navDiv"
-</html>
+<p3>Login Crap</p3>
+<p5>will go here to ensure a succ sessfull login by the user.<p5>
+<?php include("templates/page_bottom.html");?>

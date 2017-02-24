@@ -1,4 +1,4 @@
-<?php include("templates/head.html");?>
+<?php include("templates/page_top.html");?>
   <style type="text/css">
     @keyframes content-slide-in-from-left {
       from {
@@ -60,4 +60,4 @@
     <div id="content-2" class="contentPanes">This is the second content pane on this page.</div>
     <div id="content-3" class="contentPanes">This is the third content pane on this page.</div>
     <div id="content-4" class="contentPanes">This is the last content pane on this page.</div>
-<?php include("templates/footer.html");?>
+<?php include("templates/page_bottom.html");?>
