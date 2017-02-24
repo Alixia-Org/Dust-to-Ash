@@ -143,11 +143,11 @@ public class Window {
 	}
 
 	private void initFrame() {
-		panel.addKeyListener(new GameKeyListener(instance));
+		frame.addKeyListener(new GameKeyListener(instance));
 
-		panel.addMouseMotionListener(new GameMouseMotionListener(instance));
-		panel.addMouseListener(new GameMouseListener(instance));
-		panel.addMouseWheelListener(new GameMouseWheelListener(instance));
+		frame.addMouseMotionListener(new GameMouseMotionListener(instance));
+		frame.addMouseListener(new GameMouseListener(instance));
+		frame.addMouseWheelListener(new GameMouseWheelListener(instance));
 
 		frame.add(panel);
 		

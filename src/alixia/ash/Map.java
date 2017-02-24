@@ -139,7 +139,7 @@ public class Map {
 	 */
 	private void loadMap() {
 
-		Image graphic = Ash.getGraphic("tiles/dirt/dirt_0.png");
+		Image graphic = Ash.getGraphic("tiles/dirt/dirt_d.png");
 
 		short i1 = 0;
 
@@ -155,6 +155,9 @@ public class Map {
 			}
 			tiles[i] = arr;
 		}
+		// Tiles "has area been loaded" initialization test.
+		for (int i = 0; i < loadedChunks.length; i++)
+			loadedChunks[i] = true;
 
 		// TODO Load up data from the save if it exists.
 	}
