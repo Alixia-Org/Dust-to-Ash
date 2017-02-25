@@ -6,7 +6,7 @@
 <h1>Sign Up!</h1>
 <div style="display:inline-block; width:72%;"><p6>(This webpage isn't ready yet. I don't believe that we will receive any information you submit, but don't try it with sensitive information anyways! Otherwise, feel free to type in any crap you want and push submit. :)</p6></div>
 <br><br>
-<form>
+<form action="process_sign_up.php" method="post">
 Email:<br><br>
 <input type="email" name="Email">
 <br><br>
@@ -15,8 +15,8 @@ Password:<br><p6>(Don't use this yet!)</p6><br><br>
 <br><br>
 Username:<br><br>
 <input type="text" name="Username">
-
-
+<br><br>
+<input type="submit">
 
 </form>
 
