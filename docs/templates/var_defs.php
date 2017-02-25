@@ -5,7 +5,9 @@ function addFooterCode($code){
 	$footerCode[sizeof($footerCode)] = $code;
 }
 
-
+function signUp($name, $email, $password){
+	
+}
 
 
 
