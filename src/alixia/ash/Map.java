@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 /**
  * This class is used to store the physical world and the objects in it.
- * 
+ *
  * @author Zeale
  *
  */
@@ -16,7 +16,7 @@ public class Map {
 
 	/**
 	 * This enum contains a list of the different areas in the game.
-	 * 
+	 *
 	 * @author Zeale
 	 *
 	 */
@@ -75,7 +75,7 @@ public class Map {
 	 * This constructor will generate a map depending on the type it is. If this
 	 * is not the world's first launch and this Map has been loaded before, the
 	 * map is generated from a save file.
-	 * 
+	 *
 	 * @param instance
 	 *            The Ash instance which is currently running.
 	 * @param mapType
@@ -118,7 +118,7 @@ public class Map {
 
 	/**
 	 * This method returns the instance of Ash that owns this Map.
-	 * 
+	 *
 	 * @return The Ash object that is currently running.
 	 */
 	public Ash getInstance() {
@@ -139,19 +139,16 @@ public class Map {
 	 */
 	private void loadMap() {
 
-		Image graphic = Ash.getGraphic("tiles/dirt/dirt_d.png");
-
-		short i1 = 0;
+		Image dirt = Ash.getGraphic("tiles/dirt/dirt_d.png");
+		Image grass = Ash.getGraphic("tiles/dirt/grass.png");
 
 		// tiles rendering & initialization test.
 		for (int i = 0; i < tiles.length; i++) {
 			Tile[] arr = new Tile[20];
-			for (int i0 = 0; i0 < arr.length; i0++) {
-				arr[i0] = new Tile(graphic, i, i0, instance);
-				i1++;
-				if (i1 >= 500) {
-					i1 = 0;
-				}
+			arr[0] = new Tile(grass, i, 0, instance);
+			for (int i0 = 1; i0 < arr.length; i0++) {
+
+				arr[i0] = new Tile(dirt, i, i0, instance);
 			}
 			tiles[i] = arr;
 		}
@@ -165,7 +162,7 @@ public class Map {
 	/**
 	 * This method is called once every time the game is scheduled to render. It
 	 * renders whatever this Map needs it to if necessary.
-	 * 
+	 *
 	 * @param graphics
 	 *            The {@link Graphics} object that is used to draw directly to
 	 *            the screen.
