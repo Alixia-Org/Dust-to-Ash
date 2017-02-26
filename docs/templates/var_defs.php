@@ -39,13 +39,14 @@ catch(PDOException $e)
 	$logInStmtName = '';
 	$logInStmt->bindParam(':id', $logInStmtId);
 	$logInStmt->bindParam(':name', $logInStmtName);
+	$TEST_1 = '';
 	
-	
-	$logInStmt2 = $con->prepare("SELECT password FROM users WHERE username = :name");
 	function logIn($username, $password){
-		global $logInStmt, $logInStmtName, $logInStmtId, $logInStmt2;
+		global $logInStmt, $logInStmtName, $logInStmtId, $logInStmt2, $TEST_1, $con;
 		try{
-		$arr = $logInStmt2->execute();}catch(Exception $e){return false;}
+			
+		$arr = $con->query("SELECT password FROM users");}catch(Exception $e){return false;}
+		
 		if($arr->rowCount()){
 			if($arr[0]!=$password){return false;}
 		$logInStmtId = genSessionID($username);
