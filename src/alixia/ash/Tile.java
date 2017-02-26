@@ -14,13 +14,13 @@ import javax.swing.JFrame;
  * texture). See {@link #icon} for more information. <br>
  * <br>
  * <br>
- * 
+ *
  * <strong>Note: The coordinates stored in a Tile are not screen coordinates;
  * they represent the position of a Tile in its Map.</strong> (See {@link Map}
  * and its <code>tiles</code> array.) <strong>Tiles are rendered at a size of
  * 100x100 so multiplying their position by 100 should give their onscreen
  * position.</strong>
- * 
+ *
  * @author Zeale
  *
  */
@@ -44,7 +44,7 @@ public class Tile extends Object {
 	/**
 	 * This constructor generates a new Tile using its Image, position, and a
 	 * reference to the current Ash object.
-	 * 
+	 *
 	 * @param icon
 	 *            The texture of this Tile.
 	 * @param x
@@ -63,7 +63,7 @@ public class Tile extends Object {
 
 	/**
 	 * This is a getter for this Tile's texture.
-	 * 
+	 *
 	 * @return This Tile's texture.
 	 */
 	public Image getIcon() {
@@ -74,7 +74,7 @@ public class Tile extends Object {
 	 * This method will return the current X position of this Tile in its Map.
 	 * <strong>A Tile's position is different from its pixel position. See
 	 * {@link #x} for more details.</strong>
-	 * 
+	 *
 	 * @return This Tile's x position.
 	 */
 	public int getX() {
@@ -85,7 +85,7 @@ public class Tile extends Object {
 	 * This method will return the current Y position of this Tile in its Map.
 	 * <strong>A Tile's position is different from its pixel position. See
 	 * {@link #y} for more details.</strong>
-	 * 
+	 *
 	 * @return This Tile's y position.
 	 */
 	public int getY() {
@@ -94,7 +94,7 @@ public class Tile extends Object {
 
 	/**
 	 * This method is called when the game attempts to render its objects.
-	 * 
+	 *
 	 * @param graphics
 	 *            The {@link Graphics} object that is used to draw to the
 	 *            Window.
@@ -107,7 +107,7 @@ public class Tile extends Object {
 	 */
 	public void onRender(Graphics graphics, JFrame observer) {
 
-		// Get the positions that the Tile will render at.
+		// Get the positions that the Tile will render at on the screen (if it will render :))))) ).
 		int rendX = x * 100 - instance.getWindow().getCameraXPosition();
 		int rendY = (int) (y * 100 - instance.getWindow().getCameraYPosition());
 
@@ -117,14 +117,14 @@ public class Tile extends Object {
 		// resources.)
 		if (rendX <= observer.getWidth() && rendX >= 0 && rendY <= observer.getHeight() && rendY >= 0)
 			// Actually draw the image.
-			graphics.drawImage(icon, rendX, rendY + 500, 100, 100, observer);
+			graphics.drawImage(icon, rendX, (int) (rendY + 880*instance.SCREEN_HEIGHT_RATIO), 100, 100, observer);
 
 	}
 
 	/**
 	 * This method is called whenever the game ticks. Ticking is handled by a
 	 * Timer. See the {@link Timer} class for more details.
-	 * 
+	 *
 	 * @see Timer
 	 */
 	public void onTick() {

@@ -19,6 +19,7 @@ public class GameKeyListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+
 		instance.onKeyPressed(e);
 	}
 

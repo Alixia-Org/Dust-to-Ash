@@ -159,6 +159,8 @@ public class Map {
 		// TODO Load up data from the save if it exists.
 	}
 
+	private Image background = Ash.getGraphic("backgrounds/grasslands/background.png");
+
 	/**
 	 * This method is called once every time the game is scheduled to render. It
 	 * renders whatever this Map needs it to if necessary.
@@ -173,8 +175,11 @@ public class Map {
 	 *            as an {@link ImageObserver}.
 	 */
 	public void onRender(Graphics graphics, JFrame observer) {
-		if (type == Type.OVERWORLD)
-			graphics.fillRect(0, 0, observer.getWidth(), observer.getHeight());
+		if (type == Type.OVERWORLD) {
+			graphics.fillRect(0, 0, (int) (1920 * instance.SCREEN_WIDTH_RATIO),
+					(int) (1080 * instance.SCREEN_HEIGHT_RATIO));
+			graphics.drawImage(background, 0, 0, observer.getWidth(), observer.getHeight(), observer);
+		}
 		for (Tile[] array : tiles)
 			for (Tile t : array)
 				if (t != null)

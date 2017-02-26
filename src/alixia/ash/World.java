@@ -63,6 +63,7 @@ public class World {
 	}
 
 	public void onRender(Graphics graphics, JFrame observer) {
+		//The map is responsible for the background and the Tiles (the ground).
 		currentMap.onRender(graphics, observer);
 	}
 

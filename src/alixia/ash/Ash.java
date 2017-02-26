@@ -1,6 +1,7 @@
 package alixia.ash;
 
 import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -107,6 +108,14 @@ public final class Ash {
 		timer.dispose();
 		window.dispose();
 		world.dispose();
+		finalizeDisposal();
+	}
+
+	private void finalizeDisposal() {
+		System.exit(0);
+		// I did this mainly to signify to myself that the program ends here.
+		// Now I'll see "HEY LOOK. finalizeDisposal();" instead of "GEE. I
+		// WONDER WHAT METHOD TAKES OVER AFTER DISPOSE IS DONE..."
 	}
 
 	/**
@@ -139,6 +148,11 @@ public final class Ash {
 
 		window.start();
 		timer.start();
+		// The Timer returns execution to this method once the loop is over and
+		// the game has stopped running. (This means that when the game stops,
+		// "timer.start()" finishes and the code goes to the next line, which is
+		// "dispose();".
+		dispose();
 	}
 
 	/**
@@ -341,6 +355,8 @@ public final class Ash {
 	 *
 	 */
 	public void onRender(Graphics graphics, JFrame observer) {
+		// The world is responsible for the background and the Tiles (The
+		// ground)
 		world.onRender(graphics, observer);
 	}
 
@@ -420,7 +436,9 @@ public final class Ash {
 	 * fun reading all this. Also, if someone reports this method as "not in
 	 * depth enough" then I'll probably kill myself.
 	 */
-	public final float SCREEN_WIDTH_RATIO = (float) 1 / 1920 * window.getWindowWidth(),
-			SCREEN_HEIGHT_RATIO = (float) 1 / 1080 * window.getWindowHeight();
+	public final float SCREEN_WIDTH_RATIO = (float) ((double) 1 / 1920
+			* GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth()),
+			SCREEN_HEIGHT_RATIO = (float) ((double) 1 / 1080 * GraphicsEnvironment.getLocalGraphicsEnvironment()
+					.getDefaultScreenDevice().getDisplayMode().getHeight());
 
 }

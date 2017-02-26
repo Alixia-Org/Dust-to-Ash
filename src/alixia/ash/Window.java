@@ -79,7 +79,8 @@ public class Window {
 	}
 
 	public void dispose() {
-		// TODO Auto-generated method stub
+		frame.setVisible(false);
+		frame.dispose();
 	}
 
 	public int getCameraXPosition() {
@@ -150,7 +151,7 @@ public class Window {
 		frame.addMouseWheelListener(new GameMouseWheelListener(instance));
 
 		frame.add(panel);
-		
+
 		frame.setResizable(false);
 	}
 
@@ -168,9 +169,8 @@ public class Window {
 	}
 
 	public void onTick(boolean render) {
-		if (render) 
+		if (render)
 			panel.repaint();
-		
 	}
 
 	public void setName(String arg0) {
@@ -193,10 +193,13 @@ public class Window {
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		if (gd.isFullScreenSupported()) {
 			frame.setIgnoreRepaint(true);
+			frame.setUndecorated(true);
+			frame.setAlwaysOnTop(true);
 			gd.setFullScreenWindow(frame);
 		} else {
 			frame.setSize(gd.getDisplayMode().getWidth(), gd.getDisplayMode().getHeight());
 			frame.setUndecorated(true);
+			frame.setAlwaysOnTop(true);
 			frame.setVisible(true);
 		}
 
