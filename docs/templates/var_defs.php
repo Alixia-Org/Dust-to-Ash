@@ -4,6 +4,7 @@ $failed_to_connect_to_sql_database = false;
 $iEmail = '';
 $iPassword = '';
 $iUsername = '';
+$stmt = '';
 
 
 try {
@@ -26,15 +27,15 @@ catch(PDOException $e)
 	}
 	
 	function addUser($email, $username, $password){
-		global $failed_to_connect_to_sql_database, $iEmail, $iPassword, $iUsername;
+		global $failed_to_connect_to_sql_database, $iEmail, $iPassword, $iUsername, $stmt;
 		if($failed_to_connect_to_sql_database){return false;}
 		$iEmail = $email;
 		$iPassword=$password;
 		$iUsername=$username;
 	
-	$stmt->execute();
-	return true;
 	
+	return true;
+	$stmt->execute();
 	}
 
 $sessionID = 0;
