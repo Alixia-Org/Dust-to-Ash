@@ -169,6 +169,8 @@ public final class Ash {
 		return true;
 	}
 
+	private boolean k_a, k_d, k_right, k_left;
+
 	/**
 	 * This method is called by the {@link #window} when a key is pressed on the
 	 * keyboard. This event is fired at the same time that the key is pushed
@@ -182,8 +184,19 @@ public final class Ash {
 	 * @see #onKeyReleased(KeyEvent)
 	 */
 	public void onKeyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
-			timer.stop();
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_ESCAPE:
+			stop();
+			break;
+		case KeyEvent.VK_A:
+			k_a = true;
+		case KeyEvent.VK_D:
+			k_d = true;
+		case KeyEvent.VK_RIGHT:
+			k_right = true;
+		case KeyEvent.VK_LEFT:
+			k_left = true;
+		}
 	}
 
 	/**
@@ -194,8 +207,19 @@ public final class Ash {
 	 *            event, like what key was released.
 	 */
 	public void onKeyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_ESCAPE:
+			stop();
+			break;
+		case KeyEvent.VK_A:
+			k_a = false;
+		case KeyEvent.VK_D:
+			k_d = false;
+		case KeyEvent.VK_RIGHT:
+			k_right = false;
+		case KeyEvent.VK_LEFT:
+			k_left = false;
+		}
 	}
 
 	/**
@@ -377,6 +401,16 @@ public final class Ash {
 		if (physics)
 			world.onTick();
 		window.onTick(rendering);
+		if (rendering) {
+			if (k_a)
+				window.moveCameraOnX(-.001);
+			if (k_d)
+				window.moveCameraOnX(.001);
+			if (k_right)
+				window.moveCameraOnX(.001);
+			if (k_left)
+				window.moveCameraOnX(-.01);
+		}
 
 	}
 
@@ -392,6 +426,11 @@ public final class Ash {
 	public void stop() {
 		timer.stop();
 	}
+
+	public final int SCREEN_WIDTH = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice()
+			.getDisplayMode().getWidth(),
+			SCREEN_HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode()
+					.getHeight();
 
 	/**
 	 * This 'ratio' is used to scale things to the size of the screen (using the
@@ -436,9 +475,7 @@ public final class Ash {
 	 * fun reading all this. Also, if someone reports this method as "not in
 	 * depth enough" then I'll probably kill myself.
 	 */
-	public final float SCREEN_WIDTH_RATIO = (float) ((double) 1 / 1920
-			* GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth()),
-			SCREEN_HEIGHT_RATIO = (float) ((double) 1 / 1080 * GraphicsEnvironment.getLocalGraphicsEnvironment()
-					.getDefaultScreenDevice().getDisplayMode().getHeight());
+	public final float SCREEN_WIDTH_RATIO = (float) ((double) 1 / 1920 * SCREEN_WIDTH),
+			SCREEN_HEIGHT_RATIO = (float) ((double) 1 / 1080 * SCREEN_HEIGHT);
 
 }

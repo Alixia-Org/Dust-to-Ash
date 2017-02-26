@@ -35,11 +35,19 @@ public class Window {
 
 	private float yPos = 0f;
 
-	private int xPos = 0;
+	private double xPos = 0;
 
 	public Window(Ash instance) {
 		this.instance = instance;
 		initFrame();
+	}
+
+	public void moveCameraOnX(double d) {
+		moveCamera(d, 0);
+	}
+
+	public void moveCameraOnY(int distance) {
+		moveCamera(0, distance);
 	}
 
 	public void addInputMethodListener(InputMethodListener arg0) {
@@ -83,7 +91,7 @@ public class Window {
 		frame.dispose();
 	}
 
-	public int getCameraXPosition() {
+	public double getCameraXPosition() {
 		return xPos;
 	}
 
@@ -163,8 +171,8 @@ public class Window {
 		return frame.isShowing();
 	}
 
-	public void moveCamera(int xPos, float yPos) {
-		this.xPos += xPos;
+	public void moveCamera(double d, float yPos) {
+		this.xPos += d;
 		this.yPos += yPos;
 	}
 

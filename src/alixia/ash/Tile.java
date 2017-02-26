@@ -107,17 +107,18 @@ public class Tile extends Object {
 	 */
 	public void onRender(Graphics graphics, JFrame observer) {
 
-		// Get the positions that the Tile will render at on the screen (if it will render :))))) ).
-		int rendX = x * 100 - instance.getWindow().getCameraXPosition();
+		// Get the positions that the Tile will render at on the screen (if it
+		// will render :))))) ).
+		int rendX = (int) (x * 100 - instance.getWindow().getCameraXPosition());
 		int rendY = (int) (y * 100 - instance.getWindow().getCameraYPosition());
 
 		// Test if these positions will actually allow the Tile to appear on
 		// screen. (We're not gonna call the drawImage method for something that
 		// will be rendered 50000 pixels off the screen; it's a huge waste of
 		// resources.)
-		if (rendX <= observer.getWidth() && rendX >= 0 && rendY <= observer.getHeight() && rendY >= 0)
+		if (rendX <= instance.SCREEN_WIDTH && rendX >= 0 && rendY <= instance.SCREEN_HEIGHT && rendY >= 0)
 			// Actually draw the image.
-			graphics.drawImage(icon, rendX, (int) (rendY + 880*instance.SCREEN_HEIGHT_RATIO), 100, 100, observer);
+			graphics.drawImage(icon, rendX, (int) (rendY + 880 * instance.SCREEN_HEIGHT_RATIO), 100, 100, observer);
 
 	}
 
