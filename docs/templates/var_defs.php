@@ -35,6 +35,7 @@ catch(PDOException $e)
 	return true;
 	}
 	$logInStmt = $con->prepare("UPDATE users SET (sessionID=:id) WHERE username=:name");
+	$logInStmt2 = $con->prepare("SELECT password FROM users WHERE username=:name");
 	$logInStmtId = '';
 	$logInStmtName = '';
 	$logInStmt->bindParam(':id', $logInStmtId);
@@ -43,12 +44,12 @@ catch(PDOException $e)
 	
 	function logIn($username, $password){
 		global $logInStmt, $logInStmtName, $logInStmtId, $logInStmt2, $TEST_1, $con;
-		try{
-			
-		$arr = $con->query("SELECT password FROM users");}catch(Exception $e){return false;}
+		$logInStmtName = $username;
 		
-		if($arr->rowCount()){
-			if($arr[0]!=$password){return false;}
+			
+		while($thing = $logInStmt2->fetch())
+		if($thing = $password){
+		
 		$logInStmtId = genSessionID($username);
 		$logInStmtName=$username;
 		$logInStmt->execute();
