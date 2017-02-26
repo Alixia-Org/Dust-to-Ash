@@ -1,16 +1,46 @@
 <?php $footerCode = array(""); 
 
-$username = 'root';
-$password = 'Yorick123';
+$failed_to_connect_to_sql_database = false;
+$iEmail = '';
+$iPassword = '';
+$iUsername = '';
+
+
 try {
-    $conn = new PDO("mysql:host=localhost;dbname=users", $username, $password);
+    $con = new PDO("mysql:host=localhost;dbname=users", 'root', 'Yorick123');
     // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$stmt = $con->prepare('INSERT INTO users (email, password, sessionID, signup_date, username) VALUES(:email, :password, :sessionID, CURRENT_DATE, :username)');
+	$stmt->bindParam(':email', $iEmail);
+	$stmt->bindParam(':password', $iPassword);
+	$stmt->bindParam(':sessionID', genSessionID($iUsername));
+	$stmt->bindParam(':username', $iUsername);
     }
 catch(PDOException $e)
     {
-    echo "We failed to connect to our own servers. They are probably down, since a connection to ourselves can't really fail. Please try again later or check with our homepage for anything about our databases being down.";
-    }
+     $failed_to_connect_to_sql_database = true;
+	}
+	
+	function genSessionID($name){
+		
+	}
+	
+	function addUser($email, $username, $password){
+		global $failed_to_connect_to_sql_database, $iEmail, $iPassword, $iUsername;
+		if($failed_to_connect_to_sql_database){return false;}
+		$iEmail = $email;
+		$iPassword=$password;
+		$iUsername=$username;
+	
+	$stmt->execute();
+	return true;
+	
+	}
+
+$sessionID = 0;
+$username = '';
+if(isset($_COOKIE['sessionID'])) {$sessionID = $_COOKIE['sessionID'];}
+if(isset($_COOKIE['username'])){$username = $_COOKIE['username'];}
 
 
 function addFooterCode($code){

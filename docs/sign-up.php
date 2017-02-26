@@ -8,13 +8,13 @@
 <br><br>
 <form action="process_sign_up.php" method="post">
 Email:<br><br>
-<input type="email" name="Email">
+<input type="email" name="email">
 <br><br>
 Password:<br><p6>(Don't use this yet!)</p6><br><br>
-<input type="password" name="Password">
+<input type="password" name="password">
 <br><br>
 Username:<br><br>
-<input type="text" name="Username">
+<input type="text" name="username">
 <br><br>
 <input type="submit">
 
