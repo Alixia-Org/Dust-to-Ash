@@ -44,7 +44,8 @@ catch(PDOException $e)
 	$logInStmt2 = $con->prepare("SELECT password FROM users WHERE username = :name");
 	function logIn($username, $password){
 		global $logInStmt, $logInStmtName, $logInStmtId, $logInStmt2;
-		$arr = $logInStmt2->execute();
+		try{
+		$arr = $logInStmt2->execute();}catch(Exception $e){return false;}
 		if($arr->rowCount()){
 			if($arr[0]!=$password){return false;}
 		$logInStmtId = genSessionID($username);

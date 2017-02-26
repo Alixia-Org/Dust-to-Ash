@@ -3,7 +3,7 @@
 
 <h1>Log In</h1>
 <br><br>
-<form method="post" action="process_log_in.php">
+<form action="process_log_in.php" method="post">
 Username/email:<br><br>
 <input type="text" name="username"><br><br>
 Password:<br><br>
