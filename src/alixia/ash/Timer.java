@@ -5,11 +5,11 @@ package alixia.ash;
  * 15000 and the time of day in game starts at 12:00 midnight and ends at 11:59
  * PM in respect to game time. 7500 is 12 AM (noon) in the time of day.<br>
  * <br>
- * 
+ *
  * This class also handles when a tick happens and calls the current Ash's
  * {@link Ash#onTick()} method. A tick is <strong>one iteration of the game
  * loop</strong>.
- * 
+ *
  * @author Zeale
  *
  */
@@ -40,7 +40,7 @@ public class Timer {
 	 * Pauses physics functions in the game. See the game loop and the
 	 * {@link #physics} variable for more details. Physics can be resumed using
 	 * the {@link #resumePhysics()} variable.
-	 * 
+	 *
 	 * @see #loop()
 	 * @see #resumePhysics()
 	 * @see #pauseRendering()
@@ -55,7 +55,7 @@ public class Timer {
 	 * Resumes physics calculations in the game. See the game loop and the
 	 * {@link #physics} variable for more details. Physics can be paused using
 	 * {@link #pausePhysics()}.
-	 * 
+	 *
 	 * @see #loop()
 	 * @see #pausePhysics()
 	 * @see #pauseRendering()
@@ -70,7 +70,7 @@ public class Timer {
 	 * Pauses rendering in the game. See the game loop and the
 	 * {@link #rendering} variable for more details. Rendering can be resumed
 	 * using the {@link #resumeRendering()} method.
-	 * 
+	 *
 	 * @see #loop()
 	 * @see #resumeRendering()
 	 * @see #pausePhysics()
@@ -85,7 +85,7 @@ public class Timer {
 	 * Resumes rendering in the game. See the game loop and the
 	 * {@link #rendering} variable for more details. Rendering can be paused
 	 * using the {@link #pauseRendering()} method.
-	 * 
+	 *
 	 * @see #loop()
 	 * @see #pauseRendering()
 	 * @see #pausePhysics()
@@ -117,7 +117,7 @@ public class Timer {
 	/**
 	 * This constructor creates a new Timer using the specified Ash object as
 	 * its parent.
-	 * 
+	 *
 	 * @param instance
 	 *            The instance of Ash that is currently running.
 	 */
@@ -130,13 +130,13 @@ public class Timer {
 	 * game is closing.
 	 */
 	public void dispose() {
-		// TODO Dispose of Timer.
+		//TODO Dispose of the Timer... This'll probably save the in-game time and some other stuffz.
 	}
 
 	/**
 	 * This method will return Ash object which is the parent of this Timer.
 	 * (The Ash object which is currently running.)
-	 * 
+	 *
 	 * @return The Ash object which is the parent of this Timer.
 	 */
 	public Ash getInstance() {

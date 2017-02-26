@@ -32,8 +32,15 @@
 	  <span onclick="location.href='http://DustToAsh.org';" class="navSpan">Home</span>
 	  <span onclick="location.href='http://github.com/Alixia-Org/Dust-to-Ash';" class="navSpan">GitHub</span>
 	  <span onclick="location.href='http://github.com/Alixia-Org/Dust-to-Ash/wiki';" class="navSpan">Wiki</span>
-	  <span onclick="location.href='http://DustToAsh.org/sign-up.php';" class="navSpan">Sign Up</span>
-	  <span onclick="location.href='http://DustToAsh.org/log-in.php';" class="navSpan">Log In</span>
+      <?php 
+	  	if(isLoggedIn()){echo "<span onClick='location.href=\"http://DustToAsh.org/process_sign_out.php\";' class=\"navSpan\">Log Out</span>";}
+		else{
+			echo "<span onclick=\"location.href='http://DustToAsh.org/sign-up.php';\" class=\"navSpan\">Sign Up</span>
+	  <span onclick=\"location.href='http://DustToAsh.org/log-in.php';\" class=\"navSpan\">Log In</span>";
+			
+		}
+	  ?>
+	  
 	</div>
   </nav>
   <div id="content-box">
