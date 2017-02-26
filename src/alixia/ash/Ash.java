@@ -1,10 +1,12 @@
 package alixia.ash;
 
 import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -24,7 +26,7 @@ import javax.swing.JFrame;
  * and holds all its objects. (The World object has its own unique methods and
  * wraps a couple other objects.)</li>
  * </ul>
- * 
+ *
  * <br>
  * <br>
  * <br>
@@ -33,20 +35,29 @@ import javax.swing.JFrame;
  * the ones specified above. Each of those objects contribute their own
  * functions and methods and may hold other objects which each do the same. This
  * can change if necessary.
- * 
+ *
  * @author Zeale
  *
  */
 public final class Ash {
+
+	static {
+
+		File file = new File("C:/DustToAsh/data.txt");
+		if (!file.mkdirs() & !file.exists())
+			System.out.println(
+					"The C:/DustToAsh/data.txt file could not be made. Resorting to preset data... For more information about this file, visit DustToAsh.org/data_txt%20file");
+
+	}
 
 	/**
 	 * This is a static method used to retrieve a graphical resource (an
 	 * {@link Image}) from the classpath, (specifically, the
 	 * <code>graphics</code> folder).<br>
 	 * <br>
-	 * 
+	 *
 	 * This method is made to cut down on tedious work.
-	 * 
+	 *
 	 * @param path
 	 *            The path of the resource that will be retrieved.
 	 * @return A new Image object that was created using the resource specified.
@@ -58,7 +69,7 @@ public final class Ash {
 	/**
 	 * This class's main method. The program currently starts from here. This
 	 * method just creates a new <code>Ash</code> object and then starts it.
-	 * 
+	 *
 	 * @param args
 	 *            Program Arguments.
 	 */
@@ -97,11 +108,19 @@ public final class Ash {
 		timer.dispose();
 		window.dispose();
 		world.dispose();
+		finalizeDisposal();
+	}
+
+	private void finalizeDisposal() {
+		System.exit(0);
+		// I did this mainly to signify to myself that the program ends here.
+		// Now I'll see "HEY LOOK. finalizeDisposal();" instead of "GEE. I
+		// WONDER WHAT METHOD TAKES OVER AFTER DISPOSE IS DONE..."
 	}
 
 	/**
 	 * This method is a simple getter for this object's {@link #timer} object.
-	 * 
+	 *
 	 * @return This object's {@link #timer} object.
 	 */
 	public Timer getTimer() {
@@ -110,7 +129,7 @@ public final class Ash {
 
 	/**
 	 * This method is a simple getter for the {@link #window} object.
-	 * 
+	 *
 	 * @return This Ash object's window.
 	 */
 	public Window getWindow() {
@@ -129,13 +148,18 @@ public final class Ash {
 
 		window.start();
 		timer.start();
+		// The Timer returns execution to this method once the loop is over and
+		// the game has stopped running. (This means that when the game stops,
+		// "timer.start()" finishes and the code goes to the next line, which is
+		// "dispose();".
+		dispose();
 	}
 
 	/**
 	 * This method checks if <strong>Ash</strong> has been launched before. It
 	 * looks up the main save file and returns true if the file exists and is
 	 * readable.
-	 * 
+	 *
 	 * @return <code>true</code> if the game has been launched before,
 	 *         (specifically, if it has found a save data file). Returns
 	 *         <code>false</code> otherwise.
@@ -145,39 +169,63 @@ public final class Ash {
 		return true;
 	}
 
+	private boolean k_a, k_d, k_right, k_left;
+
 	/**
 	 * This method is called by the {@link #window} when a key is pressed on the
 	 * keyboard. This event is fired at the same time that the key is pushed
 	 * down. The {@link #onKeyReleased(KeyEvent)} method handles when a key is
 	 * released.
-	 * 
+	 *
 	 * @param e
 	 *            The KeyEvent object of this event. It contains data about the
 	 *            event, like what key was pressed.
-	 * 
+	 *
 	 * @see #onKeyReleased(KeyEvent)
 	 */
 	public void onKeyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
-			timer.stop();
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_ESCAPE:
+			stop();
+			break;
+		case KeyEvent.VK_A:
+			k_a = true;
+		case KeyEvent.VK_D:
+			k_d = true;
+		case KeyEvent.VK_RIGHT:
+			k_right = true;
+		case KeyEvent.VK_LEFT:
+			k_left = true;
+		}
 	}
 
 	/**
 	 * This method is called by the {@link #window} when a key is released.
-	 * 
+	 *
 	 * @param e
 	 *            The KeyEvent object of this event. It contains data about the
 	 *            event, like what key was released.
 	 */
 	public void onKeyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_ESCAPE:
+			stop();
+			break;
+		case KeyEvent.VK_A:
+			k_a = false;
+		case KeyEvent.VK_D:
+			k_d = false;
+		case KeyEvent.VK_RIGHT:
+			k_right = false;
+		case KeyEvent.VK_LEFT:
+			k_left = false;
+		}
 	}
 
 	/**
 	 * This method is called by the {@link #window} when a key is typed on the
 	 * keyboard.
-	 * 
+	 *
 	 * @param e
 	 *            The KeyEvent object of this event. It contains data about this
 	 *            event, like what key was typed.
@@ -189,7 +237,7 @@ public final class Ash {
 	/**
 	 * This method is called by the {@link #window} when any of the mouse keys
 	 * are clicked, (pushed down then released; including the mouse wheel).
-	 * 
+	 *
 	 * @param e
 	 *            The MouseEvent object of this event. It contains data about
 	 *            the event, like the position at which it occurred on the
@@ -203,7 +251,7 @@ public final class Ash {
 	/**
 	 * This method is called by the {@link #window} when the user holds down a
 	 * mouse button while moving the mouse. (This includes the mouse wheel)
-	 * 
+	 *
 	 * @param e
 	 *            The MouseEvent object of this event. It contains information
 	 *            about the event.
@@ -216,7 +264,7 @@ public final class Ash {
 	/**
 	 * This method is called by the {@link #window} when the mouse enters the
 	 * screen.
-	 * 
+	 *
 	 * @param e
 	 *            The MouseEvent object of this event. It contains data about
 	 *            the position of the mouse when this event was fired.
@@ -229,7 +277,7 @@ public final class Ash {
 	/**
 	 * This method is called by the {@link #window} when the mouse exits the
 	 * screen.
-	 * 
+	 *
 	 * @param e
 	 *            The MouseEvent object of this event. It contains data about
 	 *            the position of the mouse when this event was fired.
@@ -241,7 +289,7 @@ public final class Ash {
 
 	/**
 	 * This method is called by the {@link #window} when the mouse is moved.
-	 * 
+	 *
 	 * @param e
 	 *            The MouseEvent object of this event. It contains information
 	 *            about the event.
@@ -254,7 +302,7 @@ public final class Ash {
 	/**
 	 * This method is called by the {@link #window} when any of the mouse keys
 	 * are pressed down. (This includes the mouse wheel.)
-	 * 
+	 *
 	 * @param e
 	 *            The MouseEvent object of this event. It contains data about
 	 *            the event, like the position at which it occurred on the
@@ -268,7 +316,7 @@ public final class Ash {
 	/**
 	 * This method is called by the {@link #window} when any of the buttons on
 	 * the mouse are released. (This includes the mouse wheel.)
-	 * 
+	 *
 	 * @param e
 	 *            The MouseEvent object of this event. It contains data about
 	 *            the event, like the position of the mouse on the screen when
@@ -283,7 +331,7 @@ public final class Ash {
 	/**
 	 * This method is called by the {@link #window} when the mouse wheel is
 	 * moved.
-	 * 
+	 *
 	 * @param e
 	 *            The MouseEvent object of this event. It contains information
 	 *            about the event.
@@ -298,13 +346,13 @@ public final class Ash {
 	 * game to render things to the screen. The Window schedules render calls on
 	 * each tick by the {@link #timer}. See {@link Window} and {@link Timer} for
 	 * more details.
-	 * 
+	 *
 	 * <br>
 	 * <br>
 	 * This method takes in a {@link Graphics} object which is used to draw to
 	 * the {@link #window}. Windows use JFrames and JPanels for drawing and
 	 * rendering. See the {@link Window} class for more details.
-	 * 
+	 *
 	 * @param graphics
 	 *            The Graphics object that's used to draw to the window. See
 	 *            {@link Graphics} for code and methods from the object itself.
@@ -313,10 +361,10 @@ public final class Ash {
 	 *            used to get the size of the area that is shown to the player
 	 *            or passed into any of the Graphics object's drawImage()
 	 *            methods.
-	 * 
+	 *
 	 * @see Window
 	 * @see Graphics
-	 * 
+	 *
 	 * @see Graphics#drawImage(Image, int, int, int, int, int, int, int, int,
 	 *      java.awt.image.ImageObserver)
 	 * @see Graphics#drawImage(Image, int, int, int, int, int, int, int, int,
@@ -328,9 +376,11 @@ public final class Ash {
 	 *      java.awt.image.ImageObserver)
 	 * @see Graphics#drawImage(Image, int, int, int, int, java.awt.Color,
 	 *      java.awt.image.ImageObserver)
-	 * 
+	 *
 	 */
 	public void onRender(Graphics graphics, JFrame observer) {
+		// The world is responsible for the background and the Tiles (The
+		// ground)
 		world.onRender(graphics, observer);
 	}
 
@@ -338,12 +388,12 @@ public final class Ash {
 	 * This method is called once every 'tick.' A <code>tick</code> occurs once
 	 * every time the game loop runs. See {@link Timer} and {@link Timer#loop()}
 	 * for more details on ticks and how the game loop is managed.
-	 * 
+	 *
 	 * @param physics
 	 *            A boolean determining whether or not to run any physics.
 	 * @param rendering
 	 *            A boolean determining whether or not to run any rendering.
-	 * 
+	 *
 	 * @see Timer
 	 * @see Timer#loop()
 	 */
@@ -351,6 +401,16 @@ public final class Ash {
 		if (physics)
 			world.onTick();
 		window.onTick(rendering);
+		if (rendering) {
+			if (k_a)
+				window.moveCameraOnX(-.001);
+			if (k_d)
+				window.moveCameraOnX(.001);
+			if (k_right)
+				window.moveCameraOnX(.001);
+			if (k_left)
+				window.moveCameraOnX(-.01);
+		}
 
 	}
 
@@ -367,11 +427,16 @@ public final class Ash {
 		timer.stop();
 	}
 
+	public final int SCREEN_WIDTH = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice()
+			.getDisplayMode().getWidth(),
+			SCREEN_HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode()
+					.getHeight();
+
 	/**
 	 * This 'ratio' is used to scale things to the size of the screen (using the
 	 * 1920x1080 resolution.)<br>
 	 * <br>
-	 * 
+	 *
 	 * Example: Lets say you want the program to stop when the user moves the
 	 * mouse to the top 1/8th of the screen. In the common resolution of
 	 * 1920x1080, the top 1/8th of the screen would be from 0 (the very top) to
@@ -410,7 +475,7 @@ public final class Ash {
 	 * fun reading all this. Also, if someone reports this method as "not in
 	 * depth enough" then I'll probably kill myself.
 	 */
-	public final float SCREEN_WIDTH_RATIO = (float) 1 / 1920 * window.getWindowWidth(),
-			SCREEN_HEIGHT_RATIO = (float) 1 / 1080 * window.getWindowHeight();
+	public final float SCREEN_WIDTH_RATIO = (float) ((double) 1 / 1920 * SCREEN_WIDTH),
+			SCREEN_HEIGHT_RATIO = (float) ((double) 1 / 1080 * SCREEN_HEIGHT);
 
 }
