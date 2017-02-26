@@ -34,6 +34,28 @@ catch(PDOException $e)
 	$stmt->execute();
 	return true;
 	}
+	$logInStmt = $con->prepare("UPDATE users SET (sessionID=:id) WHERE username=:name");
+	$logInStmtId = '';
+	$logInStmtName = '';
+	$logInStmt->bindParam(':id', $logInStmtId);
+	$logInStmt->bindParam(':name', $logInStmtName);
+	
+	
+	$logInStmt2 = $con->prepare("SELECT password FROM users WHERE username = :name");
+	function logIn($username, $password){
+		global $logInStmt, $logInStmtName, $logInStmtId, $logInStmt2;
+		$arr = $logInStmt2->execute();
+		if($arr->rowCount()){
+			if($arr[0]!=$password){return false;}
+		$logInStmtId = genSessionID($username);
+		$logInStmtName=$username;
+		$logInStmt->execute();
+		setcookie('sessionId', $logInStmtId, time()+ 84600*3, '/');
+		setcookie('username', $logInStmtName, time()+ 84600*3, '/');
+		return true;
+		}
+		
+	}
 	
 	function isLoggedIn(){
 		return isset($_COOKIE['username']);
@@ -45,3 +67,16 @@ function addFooterCode($code){
 function signUp($name, $email, $password){
 }
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
