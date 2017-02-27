@@ -34,29 +34,29 @@ catch(PDOException $e)
 	$stmt->execute();
 	return true;
 	}
-	$logInStmt = $con->prepare("UPDATE users SET (sessionID=:id) WHERE username=:name");
+	$logInStmt = $con->prepare("UPDATE users SET sessionID=:id WHERE username=:name");
 	$logInStmt2 = $con->prepare("SELECT password FROM users WHERE username=:name");
 	$logInStmtId = '';
 	$logInStmtName = '';
 	$logInStmt->bindParam(':id', $logInStmtId);
 	$logInStmt->bindParam(':name', $logInStmtName);
-	$TEST_1 = '';
-	
+	$logInStmt2->bindParam(':name', $logInStmtName);
 	function logIn($username, $password){
-		global $logInStmt, $logInStmtName, $logInStmtId, $logInStmt2, $TEST_1, $con;
+		global $logInStmt, $logInStmtName, $logInStmtId, $logInStmt2,  $con;
 		$logInStmtName = $username;
-		
-			
-		while($thing = $logInStmt2->fetch())
-		if($thing = $password){
-		
+		$logInStmt2->execute();
+			$lol = $logInStmt2->fetchAll();
+		foreach($lol as $thing){
+		if($thing[0] === $password){
 		$logInStmtId = genSessionID($username);
-		$logInStmtName=$username;
 		$logInStmt->execute();
-		setcookie('sessionId', $logInStmtId, time()+ 84600*3, '/');
-		setcookie('username', $logInStmtName, time()+ 84600*3, '/');
-		return true;
+		setcookie('sessionId', $logInStmtId, time()+ 86400*3, '');
+		setcookie('username', $logInStmtName, time()+ 86400*3, '');
+		return true;}
+		
+		
 		}
+		return false;
 		
 	}
 	
@@ -66,8 +66,6 @@ catch(PDOException $e)
 function addFooterCode($code){
 	global $footerCode;
 	$footerCode[sizeof($footerCode)] = $code;
-}
-function signUp($name, $email, $password){
 }
 ?>
 
