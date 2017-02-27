@@ -33,10 +33,10 @@
 	  <span onclick="location.href='http://github.com/Alixia-Org/Dust-to-Ash';" class="navSpan">GitHub</span>
 	  <span onclick="location.href='http://github.com/Alixia-Org/Dust-to-Ash/wiki';" class="navSpan">Wiki</span>
       <?php 
-	  	if(isLoggedIn()){echo "<span onClick='location.href=\"http://DustToAsh.org/process_sign_out.php\";' class=\"navSpan\">Log Out</span>";}
+	  	if(isLoggedIn()){echo "<span onClick='location.href=\"http://DustToAsh.org/process_sign_out.php\";' style=\"color:yellow\" class=\"navSpan\">Log Out</span>";}
 		else{
-			echo "<span onclick=\"location.href='http://DustToAsh.org/sign-up.php';\" class=\"navSpan\">Sign Up</span>
-	  <span onclick=\"location.href='http://DustToAsh.org/log-in.php';\" class=\"navSpan\">Log In</span>";
+			echo "<span onclick=\"location.href='http://DustToAsh.org/sign-up.php';\" style=\"color:green\" class=\"navSpan\">Sign Up</span>
+	  <span onclick=\"location.href='http://DustToAsh.org/log-in.php';\" style=\"color:blue\" class=\"navSpan\">Log In</span>";
 			
 		}
 	  ?>
