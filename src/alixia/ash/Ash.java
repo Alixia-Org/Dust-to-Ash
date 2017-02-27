@@ -403,13 +403,13 @@ public final class Ash {
 		window.onTick(rendering);
 		if (rendering) {
 			if (k_a)
-				window.moveCameraOnX(-.001);
+				window.moveCameraOnX(-.00001);
 			if (k_d)
-				window.moveCameraOnX(.001);
+				window.moveCameraOnX(.00001);
 			if (k_right)
-				window.moveCameraOnX(.001);
+				window.moveCameraOnX(.00001);
 			if (k_left)
-				window.moveCameraOnX(-.01);
+				window.moveCameraOnX(-.00001);
 		}
 
 	}

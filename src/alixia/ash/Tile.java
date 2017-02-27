@@ -116,7 +116,7 @@ public class Tile extends Object {
 		// screen. (We're not gonna call the drawImage method for something that
 		// will be rendered 50000 pixels off the screen; it's a huge waste of
 		// resources.)
-		if (rendX <= instance.SCREEN_WIDTH && rendX >= 0 && rendY <= instance.SCREEN_HEIGHT && rendY >= 0)
+		if (rendX <= instance.SCREEN_WIDTH && rendX >= -100 && rendY <= instance.SCREEN_HEIGHT && rendY >= 0)
 			// Actually draw the image.
 			graphics.drawImage(icon, rendX, (int) (rendY + 880 * instance.SCREEN_HEIGHT_RATIO), 100, 100, observer);
 

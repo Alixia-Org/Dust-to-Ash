@@ -143,14 +143,14 @@ public class Map {
 		Image grass = Ash.getGraphic("tiles/dirt/grass.png");
 
 		// tiles rendering & initialization test.
-		for (int i = 0; i < tiles.length; i++) {
+		for (int i = -tiles.length/2; i < tiles.length/2; i++) {
 			Tile[] arr = new Tile[20];
 			arr[0] = new Tile(grass, i, 0, instance);
 			for (int i0 = 1; i0 < arr.length; i0++) {
 
 				arr[i0] = new Tile(dirt, i, i0, instance);
 			}
-			tiles[i] = arr;
+			tiles[i+tiles.length/2] = arr;
 		}
 		// Tiles "has area been loaded" initialization test.
 		for (int i = 0; i < loadedChunks.length; i++)
