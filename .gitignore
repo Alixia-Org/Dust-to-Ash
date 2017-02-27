@@ -48,3 +48,4 @@ Temporary Items
 /bin/
 
 libs/
+*.ignr
