@@ -6,8 +6,11 @@ $iEmail = '';
 $iPassword = '';
 $iUsername = '';
 $stmt = '';
-function signed_in(){
-}
+
+if(isset($_COOKIE['username'])) $global_username = $_COOKIE['username']; else $global_username = '';
+
+
+//Create the SQL connection...
 try {
     $con = new PDO("mysql:host=127.0.0.1;dbname=dusttoash", 'root', 'Yorick123');
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -22,18 +25,34 @@ catch(PDOException $e)
     {
      $failed_to_connect_to_sql_database = true;
 	}
+	
+	
+	//Generates a session id...
 	function genSessionID($name){
 		return 'asdfkj23foi13lkf';
 	}
+	
+	
+	
+	
+	//Adds a user to the database...
 	function addUser($email, $username, $password){
-		global $failed_to_connect_to_sql_database, $iEmail, $iPassword, $iUsername, $stmt;
+		global $failed_to_connect_to_sql_database, $iEmail, $iPassword, $iUsername, $stmt, $cookie_loggedin_override;
 		if($failed_to_connect_to_sql_database){return false;}
 		$iEmail = $email;
 		$iPassword=$password;
 		$iUsername=$username;
 	$stmt->execute();
+	$cookie_loggedin_override = "a";
 	return true;
 	}
+	
+	
+	
+	
+	
+	
+	//Stuff for log in function.
 	$logInStmt = $con->prepare("UPDATE users SET sessionID=:id WHERE username=:name");
 	$logInStmt2 = $con->prepare("SELECT password FROM users WHERE username=:name");
 	$logInStmtId = '';
@@ -41,8 +60,10 @@ catch(PDOException $e)
 	$logInStmt->bindParam(':id', $logInStmtId);
 	$logInStmt->bindParam(':name', $logInStmtName);
 	$logInStmt2->bindParam(':name', $logInStmtName);
+	
+	//Logs a user in...
 	function logIn($username, $password){
-		global $logInStmt, $logInStmtName, $logInStmtId, $logInStmt2,  $con;
+		global $logInStmt, $logInStmtName, $logInStmtId, $logInStmt2, $name, $con, $cookie_loggedin_override;
 		$logInStmtName = $username;
 		$logInStmt2->execute();
 			$lol = $logInStmt2->fetchAll();
@@ -52,6 +73,8 @@ catch(PDOException $e)
 		$logInStmt->execute();
 		setcookie('sessionId', $logInStmtId, time()+ 86400*3, '');
 		setcookie('username', $logInStmtName, time()+ 86400*3, '');
+		$name = $logInStmtName;
+		$cookie_loggedin_override = "a";
 		return true;}
 		
 		
@@ -60,24 +83,17 @@ catch(PDOException $e)
 		
 	}
 	
+	
+	//Checks if someone is logged in...
 	function isLoggedIn(){
-		return isset($_COOKIE['username']);
+		global $cookie_loggedin_override, $cookie_signedout_override;
+		return (isset($_COOKIE['username']) || isset($cookie_loggedin_override)) && !isset($cookie_signedout_override) ;
 	}
+	
+	
+	//Sets footer code for the applied template...
 function addFooterCode($code){
 	global $footerCode;
 	$footerCode[sizeof($footerCode)] = $code;
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-

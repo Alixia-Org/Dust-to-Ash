@@ -1,9 +1,11 @@
 <?php
 if(isset($_COOKIE['username'])){
+	$cookie_signedout_override="a";
 $temp_NAME = $_COOKIE['username'];}else{$temp_NAME = false;}
 setcookie("username", "null", 1);
 setcookie("email", "null", 1);
 setcookie("sessionID", "null", 1);
+
 include "templates/var_defs.php";
 include "templates/page_top.php";
 if($temp_NAME==false){echo "You were never signed in.....";}else{
