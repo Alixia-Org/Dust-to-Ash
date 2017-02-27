@@ -1,7 +1,7 @@
 body {
       background: #000;
       padding-bottom: 6rem;
-	  min-height:100vh;
+	  min-height:100%;
     }
     .navSpan {
       -moz-transition: color .8s ease-in-out;
@@ -64,10 +64,11 @@ body {
       padding: 1rem;
       padding-left: 0;
       position: absolute;
-	  bottom:0;
       text-align: center;
       width: 100%;
     }
+	
+	
     #content-box {
       background-color: black;
       border-color: white;
