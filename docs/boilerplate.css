@@ -1,6 +1,7 @@
 body {
       background: #000;
       padding-bottom: 6rem;
+	  min-height:100vh;
     }
     .navSpan {
       -moz-transition: color .8s ease-in-out;
