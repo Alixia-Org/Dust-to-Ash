@@ -190,12 +190,16 @@ public final class Ash {
 			break;
 		case KeyEvent.VK_A:
 			k_a = true;
+			break;
 		case KeyEvent.VK_D:
 			k_d = true;
+			break;
 		case KeyEvent.VK_RIGHT:
 			k_right = true;
+			break;
 		case KeyEvent.VK_LEFT:
 			k_left = true;
+			break;
 		}
 	}
 
@@ -213,12 +217,16 @@ public final class Ash {
 			break;
 		case KeyEvent.VK_A:
 			k_a = false;
+			break;
 		case KeyEvent.VK_D:
 			k_d = false;
+			break;
 		case KeyEvent.VK_RIGHT:
 			k_right = false;
+			break;
 		case KeyEvent.VK_LEFT:
 			k_left = false;
+			break;
 		}
 	}
 
