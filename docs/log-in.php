@@ -8,7 +8,7 @@
 
 
 <form action="process_log_in.php" method="post">
-Username/email:<br><br>
+Username:<br><br>
 <input type="text" name="username"><br><br>
 Password:<br><br>
 <input type="password" name="password"><br><br><br>
