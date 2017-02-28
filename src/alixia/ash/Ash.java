@@ -414,6 +414,8 @@ public final class Ash {
 				window.moveCameraOnX(-.00001);
 			if (k_d)
 				window.moveCameraOnX(.00001);
+			if(k_a||k_d)
+				return;
 			if (k_right)
 				window.moveCameraOnX(.00001);
 			if (k_left)

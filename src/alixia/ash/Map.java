@@ -6,6 +6,8 @@ import java.awt.image.ImageObserver;
 
 import javax.swing.JFrame;
 
+import sun.reflect.generics.tree.IntSignature;
+
 /**
  * This class is used to store the physical world and the objects in it.
  *
@@ -143,14 +145,14 @@ public class Map {
 		Image grass = Ash.getGraphic("tiles/dirt/grass.png");
 
 		// tiles rendering & initialization test.
-		for (int i = -tiles.length/2; i < tiles.length/2; i++) {
+		for (int i = -tiles.length / 2; i < tiles.length / 2; i++) {
 			Tile[] arr = new Tile[20];
 			arr[0] = new Tile(grass, i, 0, instance);
 			for (int i0 = 1; i0 < arr.length; i0++) {
 
 				arr[i0] = new Tile(dirt, i, i0, instance);
 			}
-			tiles[i+tiles.length/2] = arr;
+			tiles[i + tiles.length / 2] = arr;
 		}
 		// Tiles "has area been loaded" initialization test.
 		for (int i = 0; i < loadedChunks.length; i++)
@@ -178,7 +180,22 @@ public class Map {
 		if (type == Type.OVERWORLD) {
 			graphics.fillRect(0, 0, (int) (1920 * instance.SCREEN_WIDTH_RATIO),
 					(int) (1080 * instance.SCREEN_HEIGHT_RATIO));
-			graphics.drawImage(background, 0, 0, observer.getWidth(), observer.getHeight(), observer);
+
+			// Manage Backgrounds
+			graphics.drawImage(background,
+					(int) Math.round(-instance.getWindow().getCameraXPosition() % (1920 * instance.SCREEN_WIDTH_RATIO)),
+					(int) Math.round(-instance.getWindow().getCameraYPosition() % (1080 * instance.SCREEN_HEIGHT_RATIO)),
+					observer.getWidth(), observer.getHeight(), observer);
+			graphics.drawImage(background,
+					(int) Math.round(1920 * instance.SCREEN_WIDTH_RATIO
+							- instance.getWindow().getCameraXPosition() % (1920 * instance.SCREEN_WIDTH_RATIO)),
+					(int) Math.round(-instance.getWindow().getCameraYPosition() % (1080 * instance.SCREEN_HEIGHT_RATIO)),
+					observer.getWidth(), observer.getHeight(), observer);
+			graphics.drawImage(background,
+					(int) Math.round(-1920 * instance.SCREEN_WIDTH_RATIO
+							- instance.getWindow().getCameraXPosition() % (1920 * instance.SCREEN_WIDTH_RATIO)),
+					(int) Math.round(-instance.getWindow().getCameraYPosition() % (1080 * instance.SCREEN_HEIGHT_RATIO)),
+					observer.getWidth(), observer.getHeight(), observer);
 		}
 		for (Tile[] array : tiles)
 			for (Tile t : array)
