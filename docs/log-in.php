@@ -3,7 +3,7 @@
 
 <h1>Log In</h1>
 <br><br>
-<?php if(isset($_COOKIE['sign_in_fail'])) echo '<div id="failBoxRed" style="color:red; text-align:center;">Incorrect Information was entered...</div><br><br>';setcookie("sign_in_fail", NULL, 1, "/log-in.php"); ?>
+<?php if(isset($_COOKIE['sign_in_fail'])) echo '<div style="color:red; text-align:center;">Incorrect Information was entered...</div><br><br>';setcookie("sign_in_fail", NULL, 1, "/log-in.php"); ?>
 
 
 

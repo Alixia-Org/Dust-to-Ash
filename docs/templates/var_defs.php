@@ -40,9 +40,11 @@ catch(PDOException $e)
 	function addUser($email, $username, $password){
 		global $failed_to_connect_to_sql_database, $iEmail, $iPassword, $iUsername, $stmt, $cookie_loggedin_override, $addUserStmtName,$addUserStmt;
 		if($failed_to_connect_to_sql_database){return false;}
+		
+		$addUserStmtName=$username;
 		$addUserStmt->execute();
 		$check = $addUserStmt->fetchAll();
-		if(!isset($check))return false;
+		if(isset($check))return false;
 		$iEmail = $email;
 		$iPassword=$password;
 		$iUsername=$username;
