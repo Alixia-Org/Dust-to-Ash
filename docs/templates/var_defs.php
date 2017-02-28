@@ -38,16 +38,17 @@ catch(PDOException $e)
 	$addUserStmt->bindParam(':name', $addUserStmtName);
 	//Adds a user to the database...
 	function addUser($email, $username, $password){
-		global $failed_to_connect_to_sql_database, $iEmail, $iPassword, $iUsername, $stmt, $cookie_loggedin_override, $addUserStmtName,$addUserStmt;
+		global $failed_to_connect_to_sql_database, $iEmail, $iPassword, $iUsername, $stmt, $cookie_loggedin_override, $addUserStmtName,$addUserStmt, $genned_sessionID;
 		if($failed_to_connect_to_sql_database){return false;}
 		
 		$addUserStmtName=$username;
 		$addUserStmt->execute();
 		$check = $addUserStmt->fetchAll();
-		if(isset($check))return false;
+		if(sizeof($check)>0)return false;
 		$iEmail = $email;
 		$iPassword=$password;
 		$iUsername=$username;
+		$genned_sessionID = genSessionID($username);
 	$stmt->execute();
 	$cookie_loggedin_override = "a";
 	return true;
