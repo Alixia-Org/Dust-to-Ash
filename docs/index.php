@@ -63,17 +63,8 @@
 
   </style>
     <?php  addFooterCode("Lol. This is some text. <br><br> This is some more text."); ?>
-    <div id="content-1" class="contentPanes">This is the first content pane on this page.<br>
-    <br>
-    This content pane has a background from the internet put on it. I did not make these backgrounds.</div>
-    <div id="content-2" class="contentPanes"><s>This is the second content pane on this page.</s><br>
-    <br>
-    These backgrounds will soon be randomized,</div>
-    <div id="content-3" class="contentPanes"><s>This is the third content pane on this page.</s><br>
-    <br>
-    I just need to put in some bgs that I've made on my own.</div>
-    <div id="content-4" class="contentPanes"><s>This is the last content pane on this page.</s><br>
-    <br>
-    <br>
-    Which will happen as soon as I can take some viable screenshots of <strong><a href="https://github.com/Alixia-Org/Dust-to-Ash">Dust To Ash</a></strong>.</div>
+    <div id="content-1" class="contentPanes"></div>
+    <div id="content-2" class="contentPanes"></div>
+    <div id="content-3" class="contentPanes"></div>
+    <div id="content-4" class="contentPanes"></div>
     <?php include("templates/page_bottom.php");?>
