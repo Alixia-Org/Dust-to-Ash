@@ -59,11 +59,13 @@ body {
       border-top-width: 3px;
       border-top-style: solid;
       color: #FFF;
-      height: 163px;
+      max-height: 100px;
+	  min-height:20px;
       left: 0;
       padding: 1rem;
       padding-left: 0;
-      position: absolute;
+      position: fixed;
+	  bottom:0;
       text-align: center;
       width: 100%;
     }
@@ -77,7 +79,7 @@ body {
       color: #FFF;
       margin: 100px 5% 110px 5%;
       top: 100px;
-      width: 90%;
+      min-width:30%;
       text-align: center;
       -webkit-transition: background-color 0.6s ease-in-out 0s;
       -moz-transition: background-color 0.6s ease-in-out 0s;

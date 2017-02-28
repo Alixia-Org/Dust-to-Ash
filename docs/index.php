@@ -62,7 +62,7 @@
 	}
 
   </style>
-    <?php  addFooterCode("You have reached the end of this page."); ?>
+    <?php  addFooterCode("Lol. This is some text. <br><br> This is some more text."); ?>
     <div id="content-1" class="contentPanes">This is the first content pane on this page.<br>
     <br>
     This content pane has a background from the internet put on it. I did not make these backgrounds.</div>
