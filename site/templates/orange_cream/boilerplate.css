@@ -1,5 +1,4 @@
 body {
-	display:block;
 	background-color:red;
 }
 
@@ -21,3 +20,5 @@ nav {
 	font-weight:500;
 	color:#C60;
 }
+#content-pane{
+	margin: 20vh 11vw 11vw 15vh;
