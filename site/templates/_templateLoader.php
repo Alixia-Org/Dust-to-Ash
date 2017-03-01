@@ -21,12 +21,12 @@ function selectTemplate($templateName){
 }
 function strttmplt(){
 	global $template;
-	include 'templates/' . $template . '/_top.php';
+	include_once $_SERVER['DOCUMENT_ROOT'].'/templates/' . $template . '/_top.php';
 }
 
 function endtmplt(){
 	global $template;
-	include_once 'templates/' . $template . '/_bottom.php';
+	include_once $_SERVER['DOCUMENT_ROOT'].'/templates/' . $template . '/_bottom.php';
 }
 
 	//Sets footer code for the applied template...
@@ -39,4 +39,13 @@ function getFooterCode(){
 	global $footerCode;
 	return $footerCode;
 }
+class NavButton {
+	public $name, $link;
+}
+$navButtons = array();
+function addNavButton($name, $link){
+	global $navButtons;
+	$navButtons[sizeof($navButtons)] = new NavButton();
+}
+
 ?>

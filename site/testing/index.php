@@ -1,10 +1,6 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-</head>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/_definitions.php'; selectTemplate('orange_cream');?>
 
-<body>
-</body>
-</html>
+TEST
+
+
+<?php endtmplt();?>

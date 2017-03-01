@@ -11,7 +11,7 @@ if(isset($_COOKIE['username'])) $global_username = $_COOKIE['username']; else $g
 
 //Create the SQL connection...
 try {
-    $con = new PDO("mysql:host=127.0.0.1;dbname=dusttoash", 'root', file_get_contents("block/password.blocked"));
+    $con = new PDO("mysql:host=127.0.0.1;dbname=dusttoash", 'root', file_get_contents($_SERVER['DOCUMENT_ROOT']."/block/password.blocked"));
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$stmt = $con->prepare('INSERT INTO users (email, password, sessionID, signup_date, username) VALUES(:email, :password, :sessionID, CURRENT_DATE, :username)');
 	$gennedSessionID = genSessionID($iUsername);
@@ -96,5 +96,5 @@ catch(PDOException $e)
 		return (isset($_COOKIE['username']) || isset($cookie_loggedin_override)) && !isset($cookie_signedout_override) ;
 	}
 
-include_once __DIR__ . '/templates/_templateLoader.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/templates/_templateLoader.php';
 ?>
