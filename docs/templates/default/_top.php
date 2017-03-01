@@ -21,7 +21,7 @@
 
   </script>
   <title>Dust to Ash</title>
-  <link rel="stylesheet" type="text/css" href="../boilerplate.css" media="screen"/>
+  <link rel="stylesheet" type="text/css" href="<?php getBoilerplate();?>" media="screen"/>
   
     <script src="http://webfonts.creativecloud.com/acme:n4:default.js" type="text/javascript"></script>
 </head>
