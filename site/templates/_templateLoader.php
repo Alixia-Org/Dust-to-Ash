@@ -41,11 +41,22 @@ function getFooterCode(){
 }
 class NavButton {
 	public $name, $link;
+	function __construct(String $buttonName, String $buttonLink){
+		global $name, $link;
+		$name=$buttonName;
+		$link=$buttonLink;
+	}
 }
 $navButtons = array();
-function addNavButton($name, $link){
+function addNavButton(String $name,String $link){
 	global $navButtons;
-	$navButtons[sizeof($navButtons)] = new NavButton();
+	$navButtons[sizeof($navButtons)] = new NavButton($name, $link);
 }
 
+function getNavButtons(){
+	global $navButtons;
+	return $navButtons;
+}
+if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/templates/'.$template.'/_load.php'))
+include $_SERVER['DOCUMENT_ROOT'] . '/templates/'.$template.'/_load.php';
 ?>

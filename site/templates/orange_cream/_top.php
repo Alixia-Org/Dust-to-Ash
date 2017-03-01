@@ -6,5 +6,5 @@
 <link href="boilerplate.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<nav>TEST</nav>
+<nav><?php foreach(getNavButtons() as $navObj){echo '<div class="nav-objs" onClick="location.href=\''.$navObj->link.'">'.$navObj->name.'</div>';}?></nav>
 <div id="content-pane">
