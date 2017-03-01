@@ -1,7 +1,6 @@
-/* CSS Document */
-
 body {
-	background-color:linear-gradient();
+	display:block;
+	background-color:red;
 }
 
 nav {
@@ -11,13 +10,14 @@ nav {
 	right:0;
 	height:12vh;
 	display:table;
-	widht:100vw;
+	width:100vw;
 	padding-left:7px;
 	padding-right:7px;
-	background-color:darkorange;
+	background-color:#FF972F;
 }
 
 .nav-objs{
 	display:table-cell;
 	font-weight:500;
+	color:#C60;
 }
