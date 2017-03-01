@@ -1,5 +1,5 @@
 body {
-	background-color: red;
+	background-image: linear-gradient(to top left, #FF8000 .8em, #FFF .5em, #000 7.9em), linear-gradient(to top right, #4C4C4C .99em, #0F0 .9em);
 }
 nav {
 	position: fixed;
