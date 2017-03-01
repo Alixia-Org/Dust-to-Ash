@@ -1,4 +1,5 @@
-<?php 
+<?php
+$footerCode = array();
 $template = 'default';
 function selectTemplate($templateName){
 	global $template;
@@ -16,12 +17,17 @@ function strttmplt(){
 
 function endtmplt(){
 	global $template;
-	include 'templates/' . $template . '/_bottom.php';
+	include_once 'templates/' . $template . '/_bottom.php';
 }
 
 	//Sets footer code for the applied template...
 function addFooterCode($code){
 	global $footerCode;
 	$footerCode[sizeof($footerCode)] = $code;
+}
+
+function getFooterCode(){
+	global $footerCode;
+	return $footerCode;
 }
 ?>

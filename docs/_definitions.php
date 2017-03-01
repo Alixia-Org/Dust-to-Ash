@@ -1,8 +1,5 @@
 <?php
 
-include_once __DIR__ . '/templates/_templateLoader.php';
-
-$footerCode = array(""); 
 $failed_to_connect_to_sql_database = false;
 $iEmail = '';
 $iPassword = '';
@@ -14,7 +11,7 @@ if(isset($_COOKIE['username'])) $global_username = $_COOKIE['username']; else $g
 
 //Create the SQL connection...
 try {
-    $con = new PDO("mysql:host=127.0.0.1;dbname=dusttoash", 'root', file_get_contents("password.ignr"));
+    $con = new PDO("mysql:host=127.0.0.1;dbname=dusttoash", 'root', file_get_contents("block/password.blocked"));
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$stmt = $con->prepare('INSERT INTO users (email, password, sessionID, signup_date, username) VALUES(:email, :password, :sessionID, CURRENT_DATE, :username)');
 	$gennedSessionID = genSessionID($iUsername);
@@ -98,11 +95,6 @@ catch(PDOException $e)
 		global $cookie_loggedin_override, $cookie_signedout_override;
 		return (isset($_COOKIE['username']) || isset($cookie_loggedin_override)) && !isset($cookie_signedout_override) ;
 	}
-	
-	
-	//Sets footer code for the applied template...
-function addFooterCode($code){
-	global $footerCode;
-	$footerCode[sizeof($footerCode)] = $code;
-}
+
+include_once __DIR__ . '/templates/_templateLoader.php';
 ?>

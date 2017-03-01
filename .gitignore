@@ -49,3 +49,6 @@ Temporary Items
 
 libs/
 *.ignr
+*.blocked
+/block/
+block/
