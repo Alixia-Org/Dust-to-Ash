@@ -1,2 +1,22 @@
 /* CSS Document */
 
+body {
+	background-color:linear-gradient();
+}
+
+nav {
+	position:fixed;
+	left:0;
+	top:0;
+	right:0;
+	height:12vh;
+	display:table;
+	widht:100vw;
+	padding-left:7px;
+	padding-right:7px;
+}
+
+.nav-objs{
+	display:table-cell;
+	font-weight:500;
+}
