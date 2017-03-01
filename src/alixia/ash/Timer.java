@@ -178,8 +178,7 @@ public class Timer {
 			// then rerun the loop. We do this to make sure that we don't loop a
 			// bajillion times a second.
 			if (delta > 1000000000 / 60) {
-				tick();// The tick method actually does stuff. This method is
-						// solely the loop.
+				tick();// The tick method actually does stuff.
 				prevTime = currTime;// Update the previous time; we finished
 									// this tick, so the time when this tick
 									// stated will go to prevTime. At the top of
