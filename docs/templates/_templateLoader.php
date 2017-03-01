@@ -1,12 +1,21 @@
 <?php
 $footerCode = array();
 $template = 'default';
+$title = '';
+function setTitle($title_text) {
+	global $title;
+	$title = $title_text;
+}
+function getTitle(){
+	global $title;
+	return $title;
+}
 function selectTemplate($templateName){
 	global $template;
 	if(strcasecmp($templateName, 'default')==0)
 	$template = 'default';
-	elseif(strcasecmp($templateName, 'orange')==0)
-	$template='orange';
+	elseif(strcasecmp($templateName, 'orange')==0||strcasecmp($templateName, 'orange_cream')==0)
+	$template='orange_cream';
 	else
 	$template = 'default';
 }
