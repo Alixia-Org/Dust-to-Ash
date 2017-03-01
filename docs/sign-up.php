@@ -1,8 +1,8 @@
-<?php include("templates/var_defs.php");
+<?php include("_definitions.php");
 if(isset($_COOKIE['sign_up_fail_invalid_email'])){$bool1 = false;setcookie('sign_up_fail_invalid_email',NULL, 1);}
 if(isset($_COOKIE['sign_up_fail'])){$bool2=false;setcookie('sign_up_fail', NULL, 1);}
 ?>
-<?php include("templates/page_top.php");?>
+<?php strttmplt();?>
     <style type="text/css">
 #content-box{text-align:center;}
 </style>
@@ -36,4 +36,4 @@ Username:<br><br>
 <br><br>
 
 
-    <?php include("templates/page_bottom.php");?>
+    <?php endtmplt();?>

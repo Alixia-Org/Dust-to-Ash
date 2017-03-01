@@ -1,5 +1,5 @@
 <?php
-include("templates/var_defs.php");
+include("_definitions.php");
 if(strpos($_POST['email'], '@')===false || strpos($_POST['email'],'.')===false || strlen($_POST['email'])<7){
 setcookie('sign_up_fail_invalid_email', 'fail', time()+60, "/");
 header('Location: http://dusttoash.org/sign-up.php');
@@ -19,7 +19,7 @@ setcookie('sessionID', genSessionID('username'), time()+86400*3, '/');
 
 
 
-include "templates/page_top.php";
+strttmplt();
 
  ?>
 
@@ -29,6 +29,6 @@ include "templates/page_top.php";
 You have successfully signed up!
 <?php
 
-include "templates/page_bottom.php";
+endtmplt();
 
  ?>

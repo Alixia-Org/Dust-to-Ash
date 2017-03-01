@@ -1,5 +1,5 @@
-<?php include("templates/var_defs.php");?>
-<?php include("templates/page_top.php");?>
+<?php include("_definitions.php");
+strttmplt();?>
     <style type="text/css">
     @keyframes content-slide-in-from-left {
       from {
@@ -67,4 +67,4 @@
     <div id="content-2" class="contentPanes"></div>
     <div id="content-3" class="contentPanes"></div>
     <div id="content-4" class="contentPanes"></div>
-    <?php include("templates/page_bottom.php");?>
+    <?php endtmplt();?>

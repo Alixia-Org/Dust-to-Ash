@@ -1,5 +1,7 @@
 <?php
 
+include_once __DIR__ . '/templates/_templateLoader.php';
+
 $footerCode = array(""); 
 $failed_to_connect_to_sql_database = false;
 $iEmail = '';

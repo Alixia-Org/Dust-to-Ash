@@ -130,7 +130,8 @@ public class Timer {
 	 * game is closing.
 	 */
 	public void dispose() {
-		//TODO Dispose of the Timer... This'll probably save the in-game time and some other stuffz.
+		// TODO Dispose of the Timer... This'll probably save the in-game time
+		// and some other stuffz.
 	}
 
 	/**
@@ -149,7 +150,6 @@ public class Timer {
 	 */
 	public void initialize() {
 		// TODO Load up time from the save.
-
 	}
 
 	/**
@@ -160,9 +160,37 @@ public class Timer {
 	 * method.
 	 */
 	private void loop() {
-		while (running)
-			instance.onTick(physics, rendering);
+		// Set a random delta value, get the current system time.
+		long delta = 0, currTime = System.nanoTime(), prevTime = currTime;
+		while (running) {
+			// The current system time is set again... yay.....
+			currTime = System.nanoTime();
+			// The delta is the difference between the previous loop and this
+			// loop. Tick 1: They have the same value. Tick 2: currTime is one
+			// tick ahead, prevTime has the same value. Tick 3: currTime is 2
+			// ticks ahead, prevTime is one tick head. Previous time basically
+			// lags behind.
+			delta = currTime - prevTime;
+			// Actually loop
 
+			// If the difference in time between the last loop and this loop is
+			// greater than 1/60th of a second, go to the next tick. If not,
+			// then rerun the loop. We do this to make sure that we don't loop a
+			// bajillion times a second.
+			if (delta > 1000000000 / 60) {
+				tick();// The tick method actually does stuff. This method is
+						// solely the loop.
+				prevTime = currTime;// Update the previous time; we finished
+									// this tick, so the time when this tick
+									// stated will go to prevTime. At the top of
+									// this loop, currTime gets changed.
+			}
+		}
+
+	}
+
+	private void tick() {
+		instance.onTick(physics, rendering);
 	}
 
 	public void start() {

@@ -1,7 +1,7 @@
-<?php include("templates/var_defs.php");
+<?php include("_definitions.php");
 
 $bool = logIn($_POST['username'], $_POST["password"]);
-	include("templates/page_top.php");
+	strttmplt();
 	
 	if(!$bool){
 		setcookie("sign_in_fail", "fail", time()+600,"/log-in.php");
@@ -12,7 +12,7 @@ $bool = logIn($_POST['username'], $_POST["password"]);
 		unset($bool);
 		unset($name);
 		
-		include("templates/page_bottom.php");
+		endtmplt();
 		
 		
  ?>

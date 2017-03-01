@@ -1,4 +1,4 @@
-<?php include("templates/var_defs.php"); include("templates/page_top.php");?>
+<?php include("_definitions.php"); strttmplt();?>
 
 
 <h1>Log In</h1>
@@ -17,4 +17,4 @@ Password:<br><br>
 </form>
 
 
-<?php include("templates/page_bottom.php");?>
+<?php endtmplt();?>
