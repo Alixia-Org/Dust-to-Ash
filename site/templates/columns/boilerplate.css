@@ -28,7 +28,7 @@ nav {
 	padding-top:4vh;
 	cursor:pointer;
 }
-#content-pane {
+.content-pane {
 	box-shadow:7px 7px 3px black;
 	margin: 20vh 11vw 11vw 15vh;
 	background-color: #EC5F00;
