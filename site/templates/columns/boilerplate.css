@@ -1,9 +1,13 @@
-@keyframes background-animation{
-	0%{background-position:0vw 0px;} 100%{background-position:100vw 0px;}
+@keyframes background-animation {
+ 0% {
+background-position:0vw 0px;
 }
-
+100% {
+background-position:100vw 0px;
+}
+}
 body {
-	background-image: repeating-linear-gradient(to right, blue, blue 15vw, gray 15vw, gray 17.5vw, darkgray 17.5vw, darkgray 22.5vw, gray 22.5vw, gray 25vw, blue 25vw, blue 45vw, gray 45vw, gray 47.5vw, darkgray 47.5vw, darkgray 52.5vw, gray 52.5vw, gray 55vw, blue 55vw, blue 75vw, gray 75vw, gray 77.5vw, darkgray 77.5vw, darkgray 82.5vw, gray 82.5vw, gray 85vw, blue 85vw,blue 95vw);
+	background-image: repeating-linear-gradient(to right, blue, blue 15vw, gray 15vw, gray 17.5vw, darkgray 17.5vw, darkgray 22.5vw, gray 22.5vw, gray 25vw, blue 25vw, blue 45vw, gray 45vw, gray 47.5vw, darkgray 47.5vw, darkgray 52.5vw, gray 52.5vw, gray 55vw, blue 55vw, blue 75vw, gray 75vw, gray 77.5vw, darkgray 77.5vw, darkgray 82.5vw, gray 82.5vw, gray 85vw, blue 85vw, blue 95vw);
 	animation: background-animation 2s ease-out infinite;
 }
 nav {
@@ -14,31 +18,38 @@ nav {
 	height: 12vh;
 	display: table;
 	width: 100vw;
-	padding-left: 7px;
-	padding-right: 7px;
+	padding: 0 0 0 0;
 	background-color: #FF972F;
 	box-shadow: 0px 7px 3px black;
 }
 .nav-objs {
+	padding: 0 0 0 0;
 	display: table-cell;
 	font-weight: 800;
-	font-size:36px;
-	font-family:acme;
-	text-align:center;
-	padding-top:4vh;
-	cursor:pointer;
+	font-size: 36px;
+	font-family: acme;
+	text-align: center;
+	padding-top: 4vh;
+	cursor: pointer;
 }
-.content-pane {
-	box-shadow:7px 7px 3px black;
-	margin: 20vh 11vw 11vw 15vh;
+.content-pane, #header-pane {
+	box-shadow: 7px 7px 3px black;
+	margin: 2vh 15vh 0 15vh;
 	background-color: #EC5F00;
 	text-align: center;
 }
+#header-pane {
+	margin-top: 20vh;
+}
 footer {
-	background-color: #FF5300;
+	text-align: center;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #FF972F;
 	position: fixed;
-	min-height:5vh;
-	max-height:20vh;
+	min-height: 5vh;
+	max-height: 20vh;
 	background-color: #FF872F;
 	box-shadow: 0px -7px 3px black;
 }
