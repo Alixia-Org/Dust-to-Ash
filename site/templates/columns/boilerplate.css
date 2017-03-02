@@ -9,6 +9,7 @@ background-position:100vw 0px;
 body {
 	background-image: repeating-linear-gradient(to right, blue, blue 15vw, gray 15vw, gray 17.5vw, darkgray 17.5vw, darkgray 22.5vw, gray 22.5vw, gray 25vw, blue 25vw, blue 45vw, gray 45vw, gray 47.5vw, darkgray 47.5vw, darkgray 52.5vw, gray 52.5vw, gray 55vw, blue 55vw, blue 75vw, gray 75vw, gray 77.5vw, darkgray 77.5vw, darkgray 82.5vw, gray 82.5vw, gray 85vw, blue 85vw, blue 95vw);
 	animation: background-animation 2s ease-out infinite;
+	padding-top:20vh;
 }
 nav {
 	position: fixed;
@@ -32,16 +33,15 @@ nav {
 	padding-top: 4vh;
 	cursor: pointer;
 }
-.content-pane, #header-pane {
+.content-pane {
 	box-shadow: 7px 7px 3px black;
 	margin: 2vh 15vh 0 15vh;
 	background-color: #EC5F00;
 	text-align: center;
 }
-#header-pane {
-	margin-top: 20vh;
-}
+
 footer {
+	padding-top:1.8vh;
 	text-align: center;
 	bottom: 0;
 	left: 0;

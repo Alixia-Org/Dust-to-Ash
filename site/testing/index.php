@@ -6,7 +6,7 @@ addNavButton("Wiki", 'https://github.com/Alixia-Org/Dust-to-Ash/wiki');
 addFooterCode("This is some footer Text");
 
 strttmplt();?>
-<div id="header-pane">
+<div class="content-pane">
 <h1>HEADER</h1>
 </div>
 <div class="content-pane">Lorem Ipsum (I think that's correct.)</div>
