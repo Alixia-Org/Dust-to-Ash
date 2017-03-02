@@ -1,4 +1,4 @@
-<?php include("_definitions.php");
+<?php include("_definitions.php");setTitle('Test Page!');addFooterCode("This page is used by us to test out things!");
 strttmplt();?>
     <style type="text/css">
     @keyframes content-slide-in-from-left {
