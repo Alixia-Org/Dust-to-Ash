@@ -17,11 +17,7 @@ nav {
 	padding-left: 7px;
 	padding-right: 7px;
 	background-color: #FF972F;
-	border-width:0px;
-	border-bottom-width:4px;
-	border-color: #5D5D5D;
-	border-radius: 3px;
-	border-style:solid;
+	box-shadow: 0px 7px 3px black;
 }
 .nav-objs {
 	display: table-cell;
@@ -41,4 +37,8 @@ nav {
 footer {
 	background-color: #FF5300;
 	position: fixed;
+	min-height:5vh;
+	max-height:20vh;
+	background-color: #FF872F;
+	box-shadow: 0px -7px 3px black;
 }
