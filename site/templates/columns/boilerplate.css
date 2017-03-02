@@ -27,15 +27,10 @@ nav {
 	display: table-cell;
 	font-weight: 800;
 	font-size:36px;
-	font-style:acme;
+	font-family:acme;
 	text-align:center;
 	padding-top:4vh;
-}
-.nav-objs:first-child {
-	margin-left: 2px;
-}
-.nav-objs:last-child {
-	margin-right: 2px;
+	cursor:pointer;
 }
 #content-pane {
 	box-shadow:7px 7px 3px black;

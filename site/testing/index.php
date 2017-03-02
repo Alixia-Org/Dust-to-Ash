@@ -1,9 +1,11 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/_definitions.php'; selectTemplate('orange_cream');
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/_definitions.php'; selectTemplate('columns');
 
-addNavButton("Test", "http://dusttoash.org/");
+addNavButton("Home", "http://dusttoash.org/");
+addNavButton("GitHub", 'https://github.com/Alixia-Org/Dust-to-Ash');
+addNavButton("Wiki", 'https://github.com/Alixia-Org/Dust-to-Ash/wiki');
 
 strttmplt();?>
 
-<h1>HEADER <?php foreach(NavButton::$navButtons as $p) echo $p->name; ?></h1>
+<h1>HEADER</h1>
 
 <?php endtmplt();?>

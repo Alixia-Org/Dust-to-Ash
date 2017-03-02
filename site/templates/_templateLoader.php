@@ -12,10 +12,10 @@ function getTitle(){
 }
 function selectTemplate($templateName){
 	global $template;
-	if(strcasecmp($templateName, 'default')==0)
+	if(strcasecmp($templateName, 'default')==0||strcasecmp($templateName, 'default_template')==0)
 	$template = 'default';
-	elseif(strcasecmp($templateName, 'orange')==0||strcasecmp($templateName, 'orange_cream')==0)
-	$template='orange_cream';
+	elseif(strcasecmp($templateName, 'columns')==0)
+	$template='columns';
 	else
 	$template = 'default';
 }
