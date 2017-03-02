@@ -1,4 +1,4 @@
 </div>
-<footer><?php foreach(getFooterCode() as $line) echo $line; ?></footer>
+<footer></footer>
 </body>
 </html>

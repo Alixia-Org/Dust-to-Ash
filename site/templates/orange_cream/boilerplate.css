@@ -1,5 +1,10 @@
+@keyframes background-animation{
+	0%{background-position:0vw 0px;} 100%{background-position:100vw 0px;}
+}
+
 body {
-	background-image: linear-gradient(to top left, #FF8000 .8em, #FFF .5em, #000 7.9em), linear-gradient(to top right, #4C4C4C .99em, #0F0 .9em);
+	background-image: repeating-linear-gradient(to right, blue, blue 15vw, gray 15vw, gray 17.5vw, darkgray 17.5vw, darkgray 22.5vw, gray 22.5vw, gray 25vw, blue 25vw, blue 45vw, gray 45vw, gray 47.5vw, darkgray 47.5vw, darkgray 52.5vw, gray 52.5vw, gray 55vw, blue 55vw, blue 75vw, gray 75vw, gray 77.5vw, darkgray 77.5vw, darkgray 82.5vw, gray 82.5vw, gray 85vw, blue 85vw,blue 95vw);
+	animation: background-animation 6s ease-in-out infinite;
 }
 nav {
 	position: fixed;
@@ -20,8 +25,11 @@ nav {
 }
 .nav-objs {
 	display: table-cell;
-	font-weight: 500;
-	color: #C60;
+	font-weight: 800;
+	font-size:36px;
+	font-style:acme;
+	text-align:center;
+	padding-top:4vh;
 }
 .nav-objs:first-child {
 	margin-left: 2px;
@@ -30,6 +38,7 @@ nav {
 	margin-right: 2px;
 }
 #content-pane {
+	box-shadow:7px 7px 3px black;
 	margin: 20vh 11vw 11vw 15vh;
 	background-color: #EC5F00;
 	text-align: center;
