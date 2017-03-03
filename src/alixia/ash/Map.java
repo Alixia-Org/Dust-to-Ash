@@ -59,6 +59,7 @@ public class Map {
 	 */
 	private Tile[][] tiles;
 
+
 	/**
 	 * This is an array that stores whether or not each chunk has been loaded
 	 * already.

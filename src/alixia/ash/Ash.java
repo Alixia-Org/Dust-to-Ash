@@ -77,7 +77,6 @@ public final class Ash {
 	public static void main(String[] args) {
 		Ash ash = new Ash();
 		ash.start();
-
 	}
 
 	/**
@@ -110,6 +109,10 @@ public final class Ash {
 		window.dispose();
 		world.dispose();
 		finalizeDisposal();
+	}
+
+	public World getWorld() {
+		return world;
 	}
 
 	private void finalizeDisposal() {
@@ -153,6 +156,7 @@ public final class Ash {
 		// the game has stopped running. (This means that when the game stops,
 		// "timer.start()" finishes and the code goes to the next line, which is
 		// "dispose();".
+
 		dispose();
 	}
 
