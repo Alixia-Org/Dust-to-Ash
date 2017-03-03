@@ -6,7 +6,6 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
-import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.swing.ImageIcon;
@@ -40,8 +39,8 @@ import javax.swing.JFrame;
  * @author Zeale
  *
  */
-public final class Ash {
-
+public final class Ash implements Tickable{
+	
 	static {
 
 		File file = new File("C:/DustToAsh/data.txt");
@@ -50,6 +49,8 @@ public final class Ash {
 					"The C:/DustToAsh/data.txt file could not be made. Resorting to preset data... For more information about this file, visit DustToAsh.org/data_txt%20file");
 
 	}
+
+	private TitleScreen titleScreen;
 
 	/**
 	 * This is a static method used to retrieve a graphical resource (an
@@ -146,9 +147,14 @@ public final class Ash {
 	 * {@link #isFirstLaunch()}), then the save is loaded up in this method.
 	 */
 	private void initialize() {
+		titleScreen = new TitleScreen(this);
 		window.initialize();
-		world.initialize();
 		timer.initialize();
+		titleScreen.initialize();
+		window.setObject(titleScreen);
+		titleScreen.start();
+
+		world.initialize();
 
 		window.start();
 		timer.start();
@@ -410,7 +416,7 @@ public final class Ash {
 	 * @see Timer
 	 * @see Timer#loop()
 	 */
-	public void onTick(boolean physics, boolean rendering) {
+	public void onTick(){
 		if (physics)
 			world.onTick();
 		window.onTick(rendering);
@@ -419,7 +425,7 @@ public final class Ash {
 				window.moveCameraOnX(-.00001);
 			if (k_d)
 				window.moveCameraOnX(.00001);
-			if(k_a||k_d)
+			if (k_a || k_d)
 				return;
 			if (k_right)
 				window.moveCameraOnX(.00001);
@@ -428,6 +434,83 @@ public final class Ash {
 		}
 
 	}
+	
+	/**
+	 * This variable determines whether or not to run physics. This variable can
+	 * be set to false to prevent physics functions from being called using
+	 * {@link #pausePhysics()}. {@link #resumePhysics()} will set this variable
+	 * to true and resume the game's physics.
+	 */
+	private boolean physics = true;
+	/**
+	 * This variable determines whether or not rendering updates will be
+	 * performed. If this is set to false, the window will not repaint,
+	 * therefore, the screen will be a stale image until this variable is set to
+	 * true. Modifying this variable can be done using {@link #pauseRendering()}
+	 * and {@link #resumeRendering()}.
+	 */
+	private boolean rendering = true;
+
+	/**
+	 * Pauses physics functions in the game. See the game loop and the
+	 * {@link #physics} variable for more details. Physics can be resumed using
+	 * the {@link #resumePhysics()} variable.
+	 *
+	 * @see #loop()
+	 * @see #resumePhysics()
+	 * @see #pauseRendering()
+	 * @see #resumeRendering()
+	 * @see #physics
+	 */
+	public void pausePhysics() {
+		physics = false;
+	}
+
+	/**
+	 * Resumes physics calculations in the game. See the game loop and the
+	 * {@link #physics} variable for more details. Physics can be paused using
+	 * {@link #pausePhysics()}.
+	 *
+	 * @see #loop()
+	 * @see #pausePhysics()
+	 * @see #pauseRendering()
+	 * @see #resumeRendering()
+	 * @see #physics
+	 */
+	public void resumePhysics() {
+		physics = true;
+	}
+
+	/**
+	 * Pauses rendering in the game. See the game loop and the
+	 * {@link #rendering} variable for more details. Rendering can be resumed
+	 * using the {@link #resumeRendering()} method.
+	 *
+	 * @see #loop()
+	 * @see #resumeRendering()
+	 * @see #pausePhysics()
+	 * @see #resumePhysics()
+	 * @see #rendering
+	 */
+	public void pauseRendering() {
+		rendering = false;
+	}
+
+	/**
+	 * Resumes rendering in the game. See the game loop and the
+	 * {@link #rendering} variable for more details. Rendering can be paused
+	 * using the {@link #pauseRendering()} method.
+	 *
+	 * @see #loop()
+	 * @see #pauseRendering()
+	 * @see #pausePhysics()
+	 * @see #resumePhysics()
+	 * @see #rendering
+	 */
+	public void resumeRendering() {
+		rendering = true;
+	}
+
 
 	/**
 	 * This method starts the game. This method will manage everything, from

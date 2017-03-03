@@ -25,13 +25,22 @@ import alixia.ash.inputlisteners.GameMouseWheelListener;
 public class Window {
 
 	private final Ash instance;
+	private Renderable object;
 	private JFrame frame = new JFrame("Dust to Ash...");
 	@SuppressWarnings("serial")
 	private JPanel panel = new JPanel() {
 		public void paintComponent(Graphics g) {
-			instance.onRender(g, frame);
+			object.render(g, frame);
 		};
 	};
+
+	public void setObject(Renderable object) {
+		this.object = object;
+	}
+
+	public Renderable getObject() {
+		return object;
+	}
 
 	private float yPos = 0f;
 
