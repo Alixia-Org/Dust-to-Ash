@@ -1,6 +1,5 @@
 body {
       background: #000;
-      padding-bottom: 6rem;
 	  min-height:100%;
     }
     .navSpan {
@@ -14,13 +13,13 @@ body {
       cursor: pointer;
       display: table-cell;
       font-family: acme;
-      font-size: 24px;
+      font-size: 3.78vh;
       font-style: normal;
       font-weight: 400;
       height: auto;
       letter-spacing: .03em;
-      padding-bottom: 11.4px;
-      padding-top: 9px;
+      padding-bottom: 2.19vh;
+      padding-top: 1.4vh;
       text-align: center;
       transition: color .8s ease-in-out;
       visibility: visible;
@@ -31,10 +30,10 @@ body {
       color: red;
     }
     .navSpan:first-child {
-      margin-left: 3px;
+      margin-left: 1vw;
     }
     .navSpan:last-child {
-      margin-right: 3px;
+      margin-right: 1vw;
     }
     div#navDiv {
       display: table;
@@ -43,7 +42,7 @@ body {
     nav {
       background-color: #000;
       border: 3px solid #FFF;
-      height: 50px;
+      height: 8vh;
       left: 0;
       padding-left: 5px;
       padding-right: 5px;

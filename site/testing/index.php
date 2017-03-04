@@ -1,4 +1,5 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/_definitions.php'; selectTemplate('columns');
+setTitle('Test Page!'); addFooterCode('This is some footer text.');
 
 addNavButton("Home", "http://dusttoash.org/");
 addNavButton("GitHub", 'https://github.com/Alixia-Org/Dust-to-Ash');

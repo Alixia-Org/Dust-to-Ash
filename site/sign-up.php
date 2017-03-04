@@ -1,6 +1,14 @@
 <?php include("_definitions.php");
-if(isset($_COOKIE['sign_up_fail_invalid_email'])){$bool1 = false;setcookie('sign_up_fail_invalid_email',NULL, 1);}
-if(isset($_COOKIE['sign_up_fail'])){$bool2=false;setcookie('sign_up_fail', NULL, 1);}
+unset($invalid_email);
+unset($signup_fail);
+unset($password_too_short);
+unset($duplicate_email);
+unset($duplicate_username);
+if(isset($_COOKIE['sign_up_fail_invalid_email'])){$invalid_email = true;setcookie('sign_up_fail_invalid_email',NULL, 1);}
+if(isset($_COOKIE['sign_up_fail'])){$signup_fail=true;setcookie('sign_up_fail', NULL, 1);}
+if(isset($_COOKIE['password_too_short'])){$password_too_short = true;setcookie('password_too_short', NULL, 1);}
+if(isset($_COOKIE['duplicate_email'])){$duplicate_email = true;setcookie('duplicate_email', NULL, 1);}
+if(isset($_COOKIE['duplicate_username'])){$duplicate_username = true;setcookie('duplicate_username', NULL, 1);}
 ?>
 <?php strttmplt();?>
     <style type="text/css">
@@ -12,11 +20,14 @@ if(isset($_COOKIE['sign_up_fail'])){$bool2=false;setcookie('sign_up_fail', NULL,
 <form action="process_sign_up.php" method="post">
 
 <?php 
-if(isset($bool1)){ echo "<div style=\"color:red\">Invalid Email</div><br><br>";}
+if(!isset($invalid_email)){ echo "<div style=\"color:red\">Invalid Email</div><br><br>";}
+if(!isset($password_too_short))echo "<div style=\"color:red\">Your password was too short.</div><br><br>";
+if(!isset($duplicate_email))echo "<div style=\"color:red\">An account has already been made with that email.</div><br><br>";
+if(!isset($duplicate_username))echo "<div style=\"color:red\">That Username is taken.</div><br><br>";
 
-if(isset($bool2)){echo "<div style=\"color:red\">That username is already taken...</div><br><br>";}
-unset($bool1);
-unset($bool2);
+if(!isset($signup_fail)){echo "<div style=\"color:red\">That username is already taken...</div><br><br>";}
+unset($invalid_email);
+unset($signup_fail);
 
  ?>
 

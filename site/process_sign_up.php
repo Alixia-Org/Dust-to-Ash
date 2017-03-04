@@ -1,20 +1,27 @@
 <?php
 include("_definitions.php");
-if(strpos($_POST['email'], '@')===false || strpos($_POST['email'],'.')===false || strlen($_POST['email'])<7){
-setcookie('sign_up_fail_invalid_email', 'fail', time()+60, "/");
-header('Location: http://dusttoash.org/sign-up.php');
-}
+$var = addUser($_POST['email'],$_POST['username'], $_POST['password']);
+
+if(!strcasecmp($var, 'invalid email'))
+setcookie('sign_up_fail_invalid_email', 'fail', time()+60, $_SERVER['DOCUMENT_ROOT'].'/sign-up.php');
+
+if(!strcasecmp($var, 'password too short'))
+setcookie('password_too_short', 'fail', time()+60, $_SERVER['DOCUMENT_ROOT'].'/sign-up.php');
+
+if(!strcasecmp($var, 'duplicate email'))
+setcookie('duplicate_email', 'fail', time()+60, $_SERVER['DOCUMENT_ROOT'].'/sign-up.php');
+
+if(!strcasecmp($var, 'duplicate username'))
+setcookie('duplicate_username', 'fail', time()+60, $_SERVER['DOCUMENT_ROOT'].'/sign-up.php');
 
 
 
-$bool = addUser($_POST['email'],$_POST['username'], $_POST['password']);
-if(isset($bool)){ 
+if(!strcasecmp($var, 'success')){ 
 setcookie('username',$_POST['username'], time()+86400*3, '/');
 setcookie('email', $_POST['email'],time()+ 86400*3, '/');
 setcookie('sessionID', genSessionID('username'), time()+86400*3, '/');
 }else{
-	setcookie("sign_up_fail", "f", time()+600,"/sign-up.php");
-		header( 'Location: http://dusttoash.org/sign-up.php' ) ;
+	header('Location: http://dusttoash.org/sign-up.php');
 }
 
 

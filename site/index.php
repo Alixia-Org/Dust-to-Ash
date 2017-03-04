@@ -1,4 +1,4 @@
-<?php include("_definitions.php");setTitle('Test Page!');
+<?php include("_definitions.php");setTitle('Dust To Ash');
 strttmplt();?>
     <style type="text/css">
     @keyframes content-slide-in-from-left {

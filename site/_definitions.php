@@ -37,8 +37,21 @@ catch(PDOException $e)
 	$addUserStmt->bindParam(':name', $addUserStmtName);
 	//Adds a user to the database...
 	function addUser($email, $username, $password){
-		global $failed_to_connect_to_sql_database, $iEmail, $iPassword, $iUsername, $stmt, $cookie_loggedin_override, $addUserStmtName,$addUserStmt, $genned_sessionID;
-		if($failed_to_connect_to_sql_database){return false;}
+		global $failed_to_connect_to_sql_database, $iEmail, $iPassword, $iUsername, $stmt, $cookie_loggedin_override, $addUserStmtName,$addUserStmt, $genned_sessionID, $con;
+		if($failed_to_connect_to_sql_database){return "connection failure";}
+		if(strpos($_POST['email'], '@')===false || strpos($_POST['email'],'.')===false || strlen($_POST['email'])<7){
+			return "invalid email";
+}
+if(strlen($password)<4)return "password too short";
+		
+		foreach($con->query('SELECT email FROM users WHERE 1') as $i){
+			foreach($i as $p)
+	if(strcasecmp($email, $p)===false)
+	return 'duplicate email';}
+	foreach($con->query('SELECT username FROM users WHERE 1') as $i){
+	if(strcasecmp($username, $i)===false)
+	return 'duplicate username';
+}
 		
 		$addUserStmtName=$username;
 		$addUserStmt->execute();
@@ -50,7 +63,7 @@ catch(PDOException $e)
 		$genned_sessionID = genSessionID($username);
 	$stmt->execute();
 	$cookie_loggedin_override = "a";
-	return true;
+	return 'success';
 	}
 	
 	
