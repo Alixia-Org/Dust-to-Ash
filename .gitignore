@@ -52,3 +52,7 @@ libs/
 *.blocked
 /block/
 block/
+/.metadata
+.project
+.buildpath
+/site/.settings
