@@ -1,4 +1,4 @@
-<h2 align="center" color="red">Dust to Ash</h2>
+<h1 align="center" color="red">Dust to Ash</h1>
 <p align="center" color="#101010">On a scale of one to ten, I like cars.</p>
 
 <h3 align="center"> Welcome to Dust to Ash!</h3>
