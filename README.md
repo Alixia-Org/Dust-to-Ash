@@ -1,5 +1,5 @@
 <h1 align="center" color="red">Dust to Ash</h1>
-<p align="center" color="#101010">On a scale of one to ten, I like cars.</p>
+<p align="center" color="#101010">On a scale of one to ten, hey look a shoe.</p>
 <br>
 <br>
 <br>
